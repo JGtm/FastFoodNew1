@@ -78,9 +78,12 @@ class CMainController
                         $ingredient->delete();
                     }
                 }
-
-
                 break;
+	
+	case 'listePizza':
+                require_once('php/Vue/CVueListePizza.php');
+                $this->view = new CVueListePizza();
+	break;
             case 'adminPizza':
                 require_once('php/Vue/CPizza.php');
                 $this->view = new CPizza();

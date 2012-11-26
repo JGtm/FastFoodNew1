@@ -58,6 +58,28 @@ class CDB
             return $var;
         }
     }
+    
+    public function requete($query)
+    {
+        $cnx = $this->connect();
+        $sql = $cnx->prepare($query);
+        $sql->execute();
+	
+        /* On ferme la connection à la base de données */
+        $cnx = NULL;
+	
+        /* Tant que le fetch() nous retourne un resultat, on le stocke dans $data */
+        while ($datas = $sql->fetch())
+        {
+            /* Pour exploité notre tableau de resultat on le met dans $var qui est un array() */
+            $var[] = $datas;
+        }
+        /* On retourn le tableau */
+        if (isset($var))
+        {
+            return $var;
+        }
+    }
 
     public function insert($table, $champs, $values)
     {
@@ -66,6 +88,7 @@ class CDB
               echo $requete;
         $sql = $cnx->prepare($requete);
         $sql->execute();
+	$cnx = NULL;
     }
     
     public function insert_id()
@@ -80,6 +103,7 @@ class CDB
             echo $value."<br>";
         }
         return $id;
+	$cnx = NULL;
     }
 
     public function update($table, $champsValues, $condition)
@@ -87,6 +111,7 @@ class CDB
         $cnx = $this->connect();
         $sql = $cnx->prepare("UPDATE $table SET $champsValues WHERE $condition");
         $sql->execute();
+	$cnx = NULL;
     }
 
     public function delete($table, $condition)
@@ -95,6 +120,7 @@ class CDB
         $requete="DELETE FROM $table WHERE $condition";
         $sql = $cnx->prepare($requete);
         $sql->execute();
+	$cnx = NULL;
     }
 
 }
