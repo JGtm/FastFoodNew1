@@ -12,7 +12,7 @@ class CHome
   public function getHtml() {
 
 
-    return "reiuheiu";
+    return '';
 
   }
 

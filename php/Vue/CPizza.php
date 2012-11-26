@@ -143,6 +143,23 @@ function genererListeBase($className) {
     
     return $strListe;
 }
+function genererListePizza($className) {
+        
+    $DB = new CDB();
+    $result = $DB->selects('*', 'Produits');
+
+    $strListe = '<table>';
+    
+    foreach ($result as $produit) { // chaque ligne du tableau correspondra à un editeur
+	$strListe .= '<tr>'; 
+	$strListe .='<td>' . $produit['libelle_produit']  . '</td><td>' . $produit['prix_produit']  . '</td><td>' . $produit['id_produit']  . '</td>';
+	$strListe .= '</tr>'; 
+    }
+    
+    $strListe .= '</table>';
+    
+    return $strListe;
+}
     
 }
 
