@@ -32,31 +32,15 @@ class CClient extends CUtilisateur
         
     }
 
-    function InsertClient()
+    function create()
     {
-        $bdd = new CBdd();
-        $acn = $bdd->seConnecter();
-
-        $lsSQL = "INSERT INTO utilisateurs(email,mdp,nom,prenom,adresse,code_postal,ville,telephone,qualite) VALUES(?,?,?,?,?,?,?,?,?)";
-        $lcmd = $acn->prepare($lsSQL);
-        $tValeurs = array();
-        $tValeurs[] = $this->email;
-        $tValeurs[] = $this->mdp;
-        $tValeurs[] = $this->nom;
-        $tValeurs[] = $this->prenom;
-        $tValeurs[] = $this->adresse;
-        $tValeurs[] = $this->code_postal;
-        $tValeurs[] = $this->ville;
-        $tValeurs[] = $this->telephone;
-        $tValeurs[] = $this->qualite;
-
-        $lcmd->execute($tValeurs);
-        $bdd->seConnecter();
-    }
-
-    public function updateClient()
-    {
+        $bdd = new CDB();
+        $table='Utilisateurs';
+        $champs='id_utilisateur,email,mdp,nom,prenom,adresse,code_postal,ville,telephone,qualite';
+        $values= "'','".$this->email."','".$this->mdp."','".$this->nom."','".$this->prenom."','".$this->adresse."','".$this->code_postal."','".$this->ville."','".$this->telephone."','".$this->qualite."'";
         
+        $bdd->insert($table, $champs, $values);
+
     }
     
 

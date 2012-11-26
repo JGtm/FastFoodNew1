@@ -55,10 +55,11 @@ class CVueIngreBase
         $formulaire.= 'prix :';
         $formulaire.='</label></td>';
         $formulaire.='<td><input type="text" name="prix" /></td>';
-        $formulaire.= $this->genererListeIngredients('Base');
+        $formulaire.= $this->genererListeIngredients('Ingredients');
+        $formulaire.='<td><input type="submit" name="add" value="Ajouter Ingredient" /></td>';
+        $formulaire.='<td><input type="submit" name="del" value="Supprimer Ingredient" /></td></tr>';
 
-        $formulaire.='<td><input type="submit" value="AjouterBase        " /></td>';
-        $formulaire.='<td><input type="submit" value="Supprimer Base        " /></td></tr>';
+
         
         $formulaire.='<tr>';
         $formulaire.='<td><label>';
@@ -66,9 +67,10 @@ class CVueIngreBase
         $formulaire.='</label></td>';
         $formulaire.='<td colspan="3"><input type="text" name="libelle_base" /></td>';
         $formulaire.='<td></td><td></td>';
-        $formulaire.= $this->genererListeBase('Ingredients');
-        $formulaire.='<td><input type="submit" value="Ajouter Ingredient" /></td>';
-        $formulaire.='<td><input type="submit" value="Supprimer Ingredient" /></td></tr>';
+        $formulaire.= $this->genererListeBase('Bases');
+        $formulaire.='<td><input type="submit" name="add" value="AjouterBase        " /></td>';
+        $formulaire.='<td><input type="submit" name="del" value="Supprimer Base        " /></td></tr>';
+
         
         
         $formulaire.='</tbody>';
