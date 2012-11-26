@@ -34,17 +34,22 @@ class CVueListePizza
 			    FROM 
 				produits p');
 	
-	$strListe = '<table>';
+	$strListe = '<form method="POST" action="?page=commander">';
+	$strListe .= '<table>';
 	$strListe .= '<tr>';
 	$strListe .= '<td> </td>';
-	$strListe .= '<td>Prix</td>';
-	$strListe .= '<td> </td>';
+	$strListe .= '<td>Prix <br />(en €)</td>';
+	$strListe .= '<td>Ajouter <br />à la commande</td>';
 	$strListe .= '</tr>';
+	
+	$i = 0;
 
 	foreach ($result as $produit)
-	{ // chaque ligne du tableau correspondra à un editeur
+	{ 
+	    $i++;
+	    
 	    $strListe .= '<tr>';
-	    $strListe .='<td>' . $produit['libelle_produit'] . '</td><td>' . $produit['prix_produit'] . '</td><td>' . $produit['id_produit'] . '</td>';
+	    $strListe .='<td>' . $produit['libelle_produit'] . '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" value="' . $produit['id_produit'] . '" /></td>';
 	    $strListe .= '</tr>';
 	    
 	    $DB = new CDB();
@@ -71,6 +76,9 @@ class CVueListePizza
 	}
 
 	$strListe .= '</table>';
+	$strListe .= '<input type="reset" name="annuler" value="Annuler" />';
+	$strListe .= '<input type="submit" name="commander" value="Commander" />';
+	$strListe .= '</form>';
 
 	return $strListe;
     }

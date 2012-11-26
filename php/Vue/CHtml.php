@@ -154,7 +154,7 @@ class CHtml
   	$footer .= '<div class="footer-info">';
   	$footer .= '<p>';
   	$footer .= '<span class="siteName">Happy Family </span>';
-  	$footer .= '© 2012 | ';
+  	$footer .= ' © 2012 | ';
   	$footer .= '<a href="?privacy-policy">Politique de confidentialité</a>';
   	$footer .= '</p>';
   	$footer .= '</div>';
