@@ -28,7 +28,7 @@ class CHtml
     $header .= '<div class="header-logo"></div>';
     $header .= '<div class="header-contact">';
     $header .= '<span>Des Questions ? </span>';
-    $header .= '<span class="phone">Appelez nous : 06 52 80 81 77</span>';
+    $header .= '<span class="phone">Appelez nous : 06 66 66 66 66</span>';
     $header .= '</div>';
     $header .= '<div class="clear "></div>';
     $header .= '<div class="nav">';
@@ -154,8 +154,6 @@ class CHtml
   	$footer .= '<div class="footer-info">';
   	$footer .= '<p>';
   	$footer .= '<span class="siteName">Happy Family </span>';
-  	$footer .= ' © 2012 | ';
-  	$footer .= '<a href="?privacy-policy">Politique de confidentialité</a>';
   	$footer .= '</p>';
   	$footer .= '</div>';
   	$footer .= '<div class="footer-nav">';

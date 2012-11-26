@@ -54,7 +54,6 @@ class CVueInscription
 
     public function addUser()
     {
-        print_r($_POST);
         $newUser = new CClient($_POST['nom'], $_POST['prenom'], $_POST['email'],
                         $_POST['mdp'], $_POST['adresse'], $_POST['code_postal'],
                         $_POST['ville'], $_POST['telephone']);
