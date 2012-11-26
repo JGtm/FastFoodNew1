@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 26 Novembre 2012 à 08:57
+-- Généré le : Lun 26 Novembre 2012 à 10:21
 -- Version du serveur: 5.1.44
 -- Version de PHP: 5.3.1
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `Bases` (
   `id_base` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_base` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_base`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `Bases`
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `Commandes` (
   `id_utilisateur` int(12) NOT NULL,
   PRIMARY KEY (`id_commande`),
   KEY `FK_Commandes_id_utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `Commandes`
@@ -68,11 +68,11 @@ CREATE TABLE IF NOT EXISTS `Commandes` (
 --
 
 CREATE TABLE IF NOT EXISTS `Composer` (
-  `id_pizza` int(11) NOT NULL,
+  `id_pizza` int(11) NOT NULL AUTO_INCREMENT,
   `id_ingredient` int(12) NOT NULL,
   PRIMARY KEY (`id_pizza`,`id_ingredient`),
   KEY `FK_Composer_id_ingredient` (`id_ingredient`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `Composer`
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `Comprendre` (
   `id_produit` int(11) NOT NULL,
   PRIMARY KEY (`id_commande`,`id_produit`),
   KEY `FK_Comprendre_id_produit` (`id_produit`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `Comprendre`
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `Ingredients` (
   `libelle` varchar(45) DEFAULT NULL,
   `prix` float DEFAULT NULL,
   PRIMARY KEY (`id_ingredient`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `Ingredients`
@@ -130,11 +130,8 @@ INSERT INTO `Ingredients` (`id_ingredient`, `libelle`, `prix`) VALUES
 CREATE TABLE IF NOT EXISTS `Pizzas` (
   `id_pizza` int(11) NOT NULL AUTO_INCREMENT,
   `id_base` int(11) NOT NULL,
-  `id_produit` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_pizza`),
-  UNIQUE KEY `id_pizza_2` (`id_pizza`),
   KEY `FK_Pizzas_id_base` (`id_base`),
-  KEY `FK_Pizzas_id_produit` (`id_produit`),
   KEY `id_pizza` (`id_pizza`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
@@ -142,44 +139,44 @@ CREATE TABLE IF NOT EXISTS `Pizzas` (
 -- Contenu de la table `Pizzas`
 --
 
-INSERT INTO `Pizzas` (`id_pizza`, `id_base`, `id_produit`) VALUES
-(0, 1, NULL),
-(3, 1, NULL),
-(4, 1, NULL),
-(5, 1, NULL),
-(6, 1, NULL),
-(7, 1, NULL),
-(8, 1, NULL),
-(9, 1, NULL),
-(10, 1, NULL),
-(11, 1, NULL),
-(12, 1, NULL),
-(13, 1, NULL),
-(14, 2, NULL),
-(15, 2, NULL),
-(16, 2, NULL),
-(17, 2, NULL),
-(18, 2, NULL),
-(19, 2, NULL),
-(20, 2, NULL),
-(21, 2, NULL),
-(22, 2, NULL),
-(23, 2, NULL),
-(24, 2, NULL),
-(25, 2, NULL),
-(26, 2, NULL),
-(27, 2, NULL),
-(28, 2, NULL),
-(29, 2, NULL),
-(30, 2, NULL),
-(31, 2, NULL),
-(32, 2, NULL),
-(33, 2, NULL),
-(34, 2, NULL),
-(35, 2, NULL),
-(36, 1, NULL),
-(37, 1, NULL),
-(38, 1, NULL);
+INSERT INTO `Pizzas` (`id_pizza`, `id_base`) VALUES
+(0, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(36, 1),
+(37, 1),
+(38, 1),
+(14, 2),
+(15, 2),
+(16, 2),
+(17, 2),
+(18, 2),
+(19, 2),
+(20, 2),
+(21, 2),
+(22, 2),
+(23, 2),
+(24, 2),
+(25, 2),
+(26, 2),
+(27, 2),
+(28, 2),
+(29, 2),
+(30, 2),
+(31, 2),
+(32, 2),
+(33, 2),
+(34, 2),
+(35, 2);
 
 -- --------------------------------------------------------
 
@@ -302,16 +299,3 @@ ALTER TABLE `Composer`
 ALTER TABLE `Comprendre`
   ADD CONSTRAINT `FK_Comprendre_id_commande` FOREIGN KEY (`id_commande`) REFERENCES `commandes` (`id_commande`),
   ADD CONSTRAINT `FK_Comprendre_id_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`);
-
---
--- Contraintes pour la table `Pizzas`
---
-ALTER TABLE `Pizzas`
-  ADD CONSTRAINT `FK_Pizzas_id_base` FOREIGN KEY (`id_base`) REFERENCES `bases` (`id_base`),
-  ADD CONSTRAINT `FK_Pizzas_id_produit` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`);
-
---
--- Contraintes pour la table `Produits`
---
-ALTER TABLE `Produits`
-  ADD CONSTRAINT `FK_Produits_id_type_produit` FOREIGN KEY (`id_type_produit`) REFERENCES `types_produits` (`id_type_produit`);
