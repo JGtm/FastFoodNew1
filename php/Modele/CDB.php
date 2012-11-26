@@ -41,8 +41,6 @@ class CDB
         if ($conditions != '')
             $requete.=" WHERE $conditions";
         $sql = $cnx->prepare($requete);
-        
-        echo $requete;
 
         /* Execution de la requete */
         $sql->execute();
@@ -65,7 +63,6 @@ class CDB
     {
         $cnx = $this->connect();
         $requete="INSERT INTO $table ($champs) VALUES ($values)";
-        echo $requete;
         $sql = $cnx->prepare($requete);
         $sql->execute();
     }

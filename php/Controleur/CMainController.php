@@ -37,6 +37,19 @@ class CMainController
         //$this->params = $params;
         switch ($this->id)
         {
+            case 'adminIngreBase':
+                require_once('php/Vue/CVueIngreBase.php');
+                $this->view = new CVueIngreBase();
+                  if($_POST['libelle_base']) {
+                    $base = $this->view->addBase();
+                    $base->create();
+                }
+                if($_POST['libelle'] && $_POST['prix']) {
+                    $ingredient = $this->view->addIngredient();
+                    $ingredient->create();
+                }
+                
+                break;
             case 'adminPizza':
                 require_once('php/Vue/CPizza.php');
                 $this->view = new CPizza();

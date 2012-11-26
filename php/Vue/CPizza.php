@@ -57,7 +57,7 @@ class CPizza
         );
         
         return $newPizza;
-        var_dump($newPizza);
+
     }
     
         private function genererFormulaire($array, $lien)
