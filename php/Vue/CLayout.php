@@ -49,9 +49,9 @@ class CLayout
           'Accueil' => 'index.php',
           'Les employes' => '?page=employe',
           'Les produits' => '?page=produit',
+          'Les Ingredients '=>'?page=adminIngreBase',
           'Les pizza' => '?page=adminPizza',
-          'menu' => '?page=listePizza',
-          'contact' => ' ',
+          'menu' => '?page=listePizza', 
           'Se deconnecter' =>'?action=deconnection&page='.$_GET['page']
         );
         break;
