@@ -37,43 +37,74 @@ class CMainController
         //$this->params = $params;
         switch ($this->id)
         {
+                            
+            case 'inscription':
+                require_once('php/Vue/CVueInscription.php');
+                $this->view = new CVueInscription();
+
+                if (($_POST['mdp'])&&($_POST['email']))
+                {
+                    $user = $this->view->addUser();
+                    $user->create();
+                }
+
+                break;
             case 'adminIngreBase':
                 require_once('php/Vue/CVueIngreBase.php');
                 $this->view = new CVueIngreBase();
-                  if($_POST['libelle_base']) {
-                    $base = $this->view->addBase();
-                    $base->create();
+                if (isset($_POST["add"]))
+                {
+                    if ($_POST['libelle_base'])
+                    {
+                        $base = $this->view->addBase();
+                        $base->create();
+                    }
+                    if ($_POST['libelle'] && $_POST['prix'])
+                    {
+                        $ingredient = $this->view->addIngredient();
+                        $ingredient->create();
+                    }
                 }
-                if($_POST['libelle'] && $_POST['prix']) {
-                    $ingredient = $this->view->addIngredient();
-                    $ingredient->create();
+                if (isset($_POST["del"]))
+                {
+                    if ($_POST['Bases'])
+                    {
+                        $base = $this->view->addBase();
+                        $base->delete();
+                    }
+                    if ($_POST['Ingredients'])
+                    {
+                        $ingredient = $this->view->addIngredient();
+                        $ingredient->delete();
+                    }
                 }
-                
+
+
                 break;
             case 'adminPizza':
                 require_once('php/Vue/CPizza.php');
                 $this->view = new CPizza();
-                
-                if($_POST['libelle_produit']) {
+
+                if ($_POST['libelle_produit'])
+                {
                     $pizza = $this->view->addPizza();
                     $pizza->create();
                 }
-                
+
+                break;
+                 case 'inscription':
+                require_once('php/Vue/CVueInscription.php');
+                $this->view = new CVueInscription();
                 break;
             case 'authentification':
                 require_once('php/Vue/CAuthentication.php');
                 $this->view = new CAuthentication();
-                break;
-            case 'inscription':
-                require_once('php/Vue/CSubscription.php');
-                $this->view = new CSubscription();
                 break;
             case 'home':
             default:
                 require_once('php/Vue/CHome.php');
                 $this->view = new CHome();
                 break;
-
         }
     }
 
@@ -155,7 +186,7 @@ class CMainController
                 }
                 else
                 {
-                    header('Location:index.php?page=authentification&error');
+//                    header('Location:index.php?page=authentification&error');
                 }
             }
         }

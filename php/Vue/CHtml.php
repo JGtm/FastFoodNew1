@@ -36,7 +36,7 @@ class CHtml
     $header .= $this->nav($nav);
     $header .= '</div>';
     if(isset($_COOKIE['session']) && $_COOKIE['session']) {
-        $header .= '<span class="usertag">Bonjour, Machin</span>';
+        $header .= '<span class="usertag">'.$_SESSION['qualite'].'</span>';
     }
     $header .= '</div>';
     $header .= '<div class = "clear"></div>';
@@ -72,7 +72,7 @@ class CHtml
 	}
 	$formulaire.='<tr>';
 	$formulaire.='<td>';
-        if ($lien!='validationInscription')
+        if ($_GET['page']=='authentification')
         {
         $formulaire.='<a href="?page=inscription" >pas encore inscrit ?</a>';
         }

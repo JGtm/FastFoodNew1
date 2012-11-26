@@ -63,6 +63,7 @@ class CDB
     {
         $cnx = $this->connect();
         $requete="INSERT INTO $table ($champs) VALUES ($values)";
+              echo $requete;
         $sql = $cnx->prepare($requete);
         $sql->execute();
     }
@@ -91,7 +92,8 @@ class CDB
     public function delete($table, $condition)
     {
         $cnx = $this->connect();
-        $sql = $cnx->prepare("DELETE FROM $table WHERE $condition");
+        $requete="DELETE FROM $table WHERE $condition";
+        $sql = $cnx->prepare($requete);
         $sql->execute();
     }
 

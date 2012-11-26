@@ -24,6 +24,15 @@ class CModeleIngredient
         
     }
     
+        public function delete()
+    {
+
+        $table = 'Ingredients';
+        $condition = 'id_ingredient ='.$_POST['Ingredients'];
+        $this->DB->delete($table,$condition);
+    }
+
+    
 
 }
 
