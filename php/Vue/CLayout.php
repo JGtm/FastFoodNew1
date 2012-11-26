@@ -24,7 +24,7 @@ class CLayout
     $html .= $this->CHtml->head('salut');
     $html .= $this->CHtml->header($this->getMenuItems($_COOKIE['session']));
     
-    $html .= $this->content;
+    $html .= $this->CHtml->corps('', $this->content);
     
     $html .= $this->CHtml->ancre();
     $html .= $this->CHtml->footer($this->getMenuItems($_COOKIE['session']));
