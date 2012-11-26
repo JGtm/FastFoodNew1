@@ -1,0 +1,270 @@
+body {
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size:13px; 
+    line-height:21px; 
+    color:#7e7e7e; 
+    margin : 0px;
+    background: url("../images/texture.jpg") repeat scroll 50% 0 #FFFFFF;
+}
+
+.header {
+    background: url("../images/header_tail.png") repeat-x scroll 50% 0 transparent;
+    height: 242px;
+}
+.header-top {
+    width : 940px;
+    padding-top : 47px;
+    margin : auto;
+}
+.header-logo {
+    background: url("../images/logo/logo.png") no-repeat scroll left top transparent;
+    width:364px;
+    height:128px;
+    float : left;
+}
+.header-contact{
+    padding-top: 70px;
+    text-align: right;
+}
+.header-contact span {
+    color: #302822;
+    font: bold 12px/18px Arial,Helvetica,sans-serif;
+    letter-spacing: normal;
+}
+.header-contact .phone {
+    display: inline-block;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+}
+.nav {
+    border: 1px solid #9A4F07;
+    margin: 0 0 26px;
+    padding: 10px 0 9px;
+    position: relative;
+    z-index: 10;
+    background: url("../images/header.jpg") repeat scroll 0 0 transparent;
+    height : 31px;
+}
+.clear {
+    clear: both;
+}
+.bouton {
+    float : left;
+    margin: 0 7px;
+    padding: 5px 0 0;
+    text-transform: uppercase;
+}
+.bouton ul {
+    list-style: none outside none;
+    padding-bottom: 15px; 
+    margin-top: 0px; 
+    padding-left: 30px;
+}
+.bouton ul li:before {
+    background: url("../images/menu_border.png") repeat-y scroll 0 0 transparent;
+    content: " ";
+    display: block;
+    height: 100%;
+    left: -24px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    margin: 0 24px;
+}
+.bouton ul > li:active {
+    color : #ffffff;
+}
+.bouton ul > li {
+    float: left;
+    position: relative;
+    padding: 0px 24px;
+}
+.bouton ul > li:first-child:before {
+    display: none;
+}
+.bouton ul > li  > a {
+    font-family: 'Helvetica neue',sans-serif;
+    font-size: 14px;
+    letter-spacing: -1px;
+    line-height: 22px;
+    padding: 0;
+    transition: all 0.5s ease 0s;
+    color: #FFCB62;
+    text-decoration: none;
+}
+.bouton ul > li  > a:active {
+    font-family: 'Helvetica neue',sans-serif;
+    font-size: 14px;
+    letter-spacing: -1px;
+    line-height: 22px;
+    padding: 0;
+    transition: all 0.5s ease 0s;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.bouton ul > li  > a:hover {
+    font-family: 'Helvetica neue',sans-serif;
+    font-size: 14px;
+    letter-spacing: -1px;
+    line-height: 22px;
+    padding: 0;
+    transition: all 0.5s ease 0s;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.search{
+
+}
+.corps {
+    width: 938px;
+    margin: auto;
+    margin-top: 10px;
+    min-height: 350px;
+}
+.contenu {
+    background-color: #ffffff;
+    margin-top: 10px;
+    padding: 10px;
+    min-height: 350px;
+}
+.contenu img {
+    float :right;
+    max-width: 350px;
+}
+h3.title {
+    display: block;
+    font: 30px/36px 'Helvetica neue',sans-serif;
+    letter-spacing: -1px;
+    color: #257E31;
+}
+body a {
+    color:#ef1d26;
+}
+body a:hover {
+    color:#000000;
+}
+h2.title {
+    color: #3E2A15;
+    font-size: 60px;
+    font-family: helvetica neue,sans-serif;
+    letter-spacing: normal;
+    line-height: 72px;
+    margin: 0 0 7px;
+    text-transform: uppercase;
+    padding: 5px;
+}
+.welcome {
+    color: #7B6853;
+    font-family: helvetica neue,sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    text-transform: uppercase;
+    padding: 10px;
+}
+.more {
+    background: url("../images/button_tail.png") repeat-x scroll 0 0 transparent;
+    border: medium none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
+    display: inline-block;
+    font-weight: bold;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 23px;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba(171, 104, 37, 0.58);
+    color: #ffffff;
+    text-align: right;
+}
+.right {
+    margin-right : 10px;
+}
+.more:hover {
+    background: url("../images/button_tail.png") repeat-x scroll 0 -36px transparent;
+    border: medium none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
+    display: inline-block;
+    font-weight: bold;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 23px;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba(171, 104, 37, 0.58);
+    color: #ffffff;
+}
+.blocktotop {
+    bottom: 13px;
+    position: fixed;
+    right: 13px;
+}
+a#totop {
+    background: url("../images/scroll-to-top.png") no-repeat scroll 8px 12px #FFCB62;
+    border-radius: 21px 21px 21px 21px;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12) inset, 1px 1px 0 rgba(255, 255, 255, 0.75);
+    display: block;
+    font-size: 1px;
+    height: 42px;
+    line-height: 1px;
+    text-indent: -9999em;
+    transition: all 0.5s ease 0s;
+    width: 42px;
+    z-index: 999;
+}
+a#totop:hover {
+    background: url("../images/scroll-to-top.png") no-repeat scroll 8px 12px #EEEEEE;
+    border-radius: 21px 21px 21px 21px;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12) inset, 1px 1px 0 rgba(255, 255, 255, 0.75);
+    display: block;
+    font-size: 1px;
+    height: 42px;
+    line-height: 1px;
+    text-indent: -9999em;
+    transition: all 0.5s ease 0s;
+    width: 42px;
+    z-index: 999;
+}
+.footer {
+    background: url("../images/footer.jpg") repeat scroll 50% 0 transparent;
+    padding: 80px 0;
+}
+.footer-top {
+    width : 938px;
+    margin : auto;
+}
+.footer-info {
+    float : left;
+}
+.footer-info a {
+    color : #FFFFFF;
+}
+.siteName {
+    background: url("../images/footer_logo.png") repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 43px;
+    overflow: hidden;
+    text-indent: -200px;
+    vertical-align: bottom;
+    width: 205px;
+}
+.footer-nav {
+    text-decoration: none;
+    padding-top: 23px; 
+    padding-left: 500px
+}
+.footer-nav a {
+    color : #FFCB62;
+}
+.footer-nav a:active, .footer-nav a:hover {
+    color : #FFFFFF;
+}
+.footer-nav li {
+    float: left;
+    font-size: 11px;
+    list-style: none outside none;
+    margin: 0 5px 0 4px;
+    text-transform: uppercase;
+}
+div.itemCommentsForm form input#submitCommentButton:hover, input[type="submit"]:hover, button.button:hover {
+    color:#ffffff;
+}
