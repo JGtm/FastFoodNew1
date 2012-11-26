@@ -84,6 +84,10 @@ class CMainController
                 require_once('php/Vue/CVueListePizza.php');
                 $this->view = new CVueListePizza();
 	break;
+	case 'listeEmploye':
+                require_once('php/Vue/CVueListeEmploye.php');
+                $this->view = new CVueListeEmploye();
+	break;
 	case 'commander':
                 require_once('php/Vue/CVueCommander.php');
                 $this->view = new CVueListePizza();
