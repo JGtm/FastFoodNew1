@@ -37,14 +37,16 @@ class CVueListeEmploye
 			    WHERE 
 				qualite LIKE "BO"');
 	
-	$strListe = '<form method="POST" action="?page=virerEmploye">';
+	$strListe = '<form method="POST" action="?page='.$_GET['page'].'">';
 	$strListe .= '<table>';
-	$strListe .= '<tr>';
+        $strListe .= '<thead>';
+	$strListe .= '<th>';
 	$strListe .= '<td>Nom</td>';
 	$strListe .= '<td>Prénom</td>';
 	$strListe .= '<td>email</td>';
 	$strListe .= '<td>Mot de passe</td>';
-	$strListe .= '</tr>';
+	$strListe .= '</th>';
+        $strListe .= '</thead></tbody>';
 
 	foreach ($result as $employe)
 	{ 

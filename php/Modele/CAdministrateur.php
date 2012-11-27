@@ -14,6 +14,7 @@ class CAdministrateur extends CUtilisateur
     // --- OPERATIONS ---
     public function __construct($nom = '', $prenom = '', $email = '', $mdp = '')
     {
+        parent::__construct($nom, $prenom, $email, $mdp, 'SBO');
 	$this->nom = $_SESSION['nom'];
         $this->prenom = $_SESSION['prenom'];
         $this->id = $_SESSION['id_utilisateur'];
