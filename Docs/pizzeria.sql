@@ -123,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `Comprendre` (
   PRIMARY KEY (`id_commande`,`id_produit`),
   KEY `FK_Comprendre_id_produit` (`id_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+ALTER TABLE `Comprendre` ADD `quantite` INT( 2 ) NOT NULL; 
 
 --
 -- Contenu de la table `Comprendre`
