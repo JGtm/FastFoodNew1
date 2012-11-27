@@ -49,7 +49,7 @@ class CVueListePizza
 	    $i++;
 	    
 	    $strListe .= '<tr>';
-	    $strListe .='<td>' . $produit['libelle_produit'] . '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" value="' . $produit['id_produit'] . '" /></td>';
+	    $strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" value="' . $produit['id_produit'] . '" /></td>';
 	    $strListe .= '</tr>';
 	    
 	    $DB = new CDB();

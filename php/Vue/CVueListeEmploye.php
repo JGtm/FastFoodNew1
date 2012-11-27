@@ -37,7 +37,7 @@ class CVueListeEmploye
 			    WHERE 
 				qualite LIKE "BO"');
 	
-	$strListe = '<form method="POST" action="?page=commander">';
+	$strListe = '<form method="POST" action="?page=virerEmploye">';
 	$strListe .= '<table>';
 	$strListe .= '<tr>';
 	$strListe .= '<td>Nom</td>';

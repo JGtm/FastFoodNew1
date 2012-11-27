@@ -100,7 +100,7 @@ class CMainController
 	break;
 	case 'commander':
                 require_once('php/Vue/CVueCommander.php');
-                $this->view = new CVueListePizza();
+                $this->view = new CVueCommander();
 	break;
             case 'adminPizza':
                 require_once('php/Vue/CPizza.php');
