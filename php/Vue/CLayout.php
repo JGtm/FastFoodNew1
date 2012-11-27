@@ -21,7 +21,7 @@ class CLayout
   public function render() {
     $html = '<!DOCTYPE html>';
     $html .= '<html>';
-    $html .= $this->CHtml->head('Bienvenue chez Pizza INSTA');
+    $html .= $this->CHtml->head('Pizza INSTA');
     $html .= $this->CHtml->header($this->getMenuItems($_COOKIE['session']));
     
     $html .= $this->CHtml->corps('', $this->content);
