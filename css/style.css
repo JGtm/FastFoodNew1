@@ -139,6 +139,12 @@ h3.title {
     letter-spacing: -1px;
     color: #257E31;
 }
+h3.titre {
+    display: block;
+    font: 19px/25px 'Helvetica neue',sans-serif;
+    letter-spacing: -1px;
+    color: #257E31;
+}
 body a {
     color:#ef1d26;
 }

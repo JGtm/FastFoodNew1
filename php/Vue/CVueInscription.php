@@ -31,7 +31,7 @@ class CVueInscription
             'Nom :' => 'nom',
             'Prenom :' => 'prenom',
             'Adresse:' => 'adresse',
-            'Code postale :' => 'code_postale',
+            'Code postal :' => 'code_postal',
             'Ville :' => 'ville',
             'Telephone :' => 'telephone',
         );
