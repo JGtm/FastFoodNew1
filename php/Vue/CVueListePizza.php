@@ -34,7 +34,7 @@ class CVueListePizza
 				p.image
 			    FROM 
 				produits p');
-	
+
 	$strListe = '<form method="POST" action="?page=commander">';
 	$strListe .= '<table>';
 	$strListe .= '<tr>';
@@ -42,18 +42,19 @@ class CVueListePizza
 	$strListe .= '<td> </td>';
 	$strListe .= '<td>Prix <br />(en €)</td>';
 	$strListe .= '<td>Ajouter <br />à la commande</td>';
+	$strListe .= '<td>Quantité</td>';
 	$strListe .= '</tr>';
-	
+
 	$i = 0;
 
 	foreach ($result as $produit)
-	{ 
+	{
 	    $i++;
-	    
+
 	    $strListe .= '<tr>';
 	    $strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td>';
 	    $strListe .= '</tr>';
-	    
+
 	    $DB = new CDB();
 	    $ingredients = $DB->requete('SELECT 
 				i.libelle 
@@ -63,18 +64,27 @@ class CVueListePizza
 				INNER JOIN produits p ON p.id_pizza = c.id_pizza  
 			    WHERE 
 				p.libelle_produit LIKE "' . $produit['libelle_produit'] . '"');
-	    
+
 	    $strListe .= '<tr><td><img src="' . $produit['image'] . '" style="max-width:125px" /></td><td>';
 	    $strListeIngredients = '';
-	    
+
 	    foreach ($ingredients as $ingredient)
 	    {
 		$strListeIngredients .= $ingredient['libelle'] . ', ';
 	    }
-	    
+
 	    $strListeIngredients = substr($strListeIngredients, 0, -2);
 	    $strListe .= $strListeIngredients;
-	    $strListe .= '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" value="' . $produit['id_produit'] . '" /></td></tr>';
+	    $strListe .= '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" name="id_pizza_' . $i . '" value="' . $produit['id_produit'] . '" /></td>';
+	    $strListe .= '<td><select name="quantite_' . $produit['id_produit'] . '>';
+
+	    for ($j = 0; $j < 6; $j++)
+	    {
+		$strListe.='<option value="' . $j . '">' . $j . '</option>';
+	    }
+
+	    $strListe.="</select></td>";
+	    $strListe .= '</tr>';
 	}
 
 	$strListe .= '</table>';
