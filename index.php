@@ -1,7 +1,8 @@
 <?php
 
 session_start(); // initialisation des variables de session, il ne doit pas y avoir d'affichage avant cette ligne!!
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 require_once 'php/Controleur/CMainController.php';
 
   $id = $_GET['page'];
@@ -10,9 +11,4 @@ require_once 'php/Controleur/CMainController.php';
   $mainController->setPage($id);
   $mainController->render();
 
-?>		
-<script>
-
-    document.getElementById("formId").
-
-</script>
+?>
