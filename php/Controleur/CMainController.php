@@ -54,10 +54,6 @@ class CMainController
                     $produit->create();
                        
                 }
-                
- 
-                
-
                 break;
 
             case 'inscription':
@@ -124,17 +120,7 @@ class CMainController
                 require_once('php/Vue/CVueCommander.php');
                 $this->view = new CVueCommander();
                 break;
-            case 'adminPizza':
-                require_once('php/Vue/CPizza.php');
-                $this->view = new CPizza();
-
-                if ($_POST['libelle_produit'])
-                {
-                    $pizza = $this->view->addPizza();
-                    $pizza->create();
-                }
-
-                break;
+            
             case 'inscription':
                 require_once('php/Vue/CVueInscription.php');
                 $this->view = new CVueInscription();

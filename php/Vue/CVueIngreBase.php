@@ -58,10 +58,10 @@ class CVueIngreBase
         $formulaire.='<tbody>';
         
         
-        $formulaire.='<tr><td colspan="5"><h3 class="titre">Ajout/Suppression de types de produit </h3></td><tr>';
+        $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de produit </h3></td><tr>';
         $formulaire.='<tr>';
         $formulaire.='<td><label>';
-        $formulaire.= 'Nom du type :';
+        $formulaire.= 'Nom du type:';
         $formulaire.='</label></td>';
         $formulaire.='<td colspan="3"><input type="text" name="libelle_type_produit" /></td>';
         $formulaire.='<td></td>';
@@ -72,14 +72,14 @@ class CVueIngreBase
 
 
 
-        $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de produit d\'ingredients </h3></td><tr>';
+        $formulaire.='<tr><td colspan="6"><h3 class="titre">Ajout/Suppression de types de produit d\'ingredients </h3></td><tr>';
         $formulaire.='<tr>';
         $formulaire.='<td><label>';
-        $formulaire.= 'Nom de l\'ingredient :';
+        $formulaire.= 'Nom de l\'ingredient:';
         $formulaire.='</label></td>';
         $formulaire.='<td colspan="3"><input type="text" name="libelle" /></td>';
         $formulaire.='<td><label>';
-        $formulaire.= 'prix :';
+        $formulaire.= 'prix:';
         $formulaire.='</label></td>';
         $formulaire.='<td><input type="text" name="prix" /></td>';
         $formulaire.= $this->genererListeIngredients('Ingredients');
@@ -87,10 +87,10 @@ class CVueIngreBase
         $formulaire.='<td><input type="submit" name="del" value="Supprimer Ingredient" /></td></tr>';
 
 
-        $formulaire.='<tr><td colspan="5"><h3 class="titre">Ajout/Suppression de types de bases </h3></td><tr>';
+        $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de bases </h3></td><tr>';
         $formulaire.='<tr>';
         $formulaire.='<td><label>';
-        $formulaire.= 'Nom de la base :';
+        $formulaire.= 'Nom de la base:';
         $formulaire.='</label></td>';
         $formulaire.='<td colspan="3"><input type="text" name="libelle_base" /></td>';
         $formulaire.='<td></td><td></td>';
