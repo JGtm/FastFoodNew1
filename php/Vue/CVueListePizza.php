@@ -33,7 +33,10 @@ class CVueListePizza
 				p.id_produit,
 				p.image
 			    FROM 
-				produits p');
+				produits p
+				INNER JOIN types_produits t ON t.id_type_produit = p.id_type_produit
+			    WHERE
+				t.libelle_type_produit LIKE "Pizza"');
 
 	$strListe = '<form method="POST" action="?page=commander">';
 	$strListe .= '<table>';

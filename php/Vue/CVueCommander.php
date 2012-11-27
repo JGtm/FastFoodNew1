@@ -33,7 +33,7 @@ class CVueCommander
 	
 	foreach($_POST AS $post => $value)
 	{
-	    if($value == 'id_pizza')
+	    
 	}
 	
 	return print_r($_POST);
