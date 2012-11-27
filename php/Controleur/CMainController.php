@@ -64,6 +64,11 @@ class CMainController
                         $ingredient = $this->view->addIngredient();
                         $ingredient->create();
                     }
+                    if ($_POST['libelle_type_produit'])
+                    {
+                        $type = $this->view->addTypeProduit();
+                        $type->create();
+                    }
                 }
                 if (isset($_POST["del"]))
                 {
@@ -76,6 +81,11 @@ class CMainController
                     {
                         $ingredient = $this->view->addIngredient();
                         $ingredient->delete();
+                    }
+                    if ($_POST['Types_produits'])
+                    {
+                        $type = $this->view->addTypeProduit();
+                        $type->delete();
                     }
                 }
                 break;
