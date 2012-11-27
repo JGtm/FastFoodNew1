@@ -30,13 +30,15 @@ class CVueListePizza
 	$result = $DB->requete('SELECT DISTINCT
 				p.libelle_produit, 
 				p.prix_produit, 
-				p.id_produit
+				p.id_produit,
+				p.image
 			    FROM 
 				produits p');
 	
 	$strListe = '<form method="POST" action="?page=commander">';
 	$strListe .= '<table>';
 	$strListe .= '<tr>';
+	$strListe .= '<td> </td>';
 	$strListe .= '<td> </td>';
 	$strListe .= '<td>Prix <br />(en €)</td>';
 	$strListe .= '<td>Ajouter <br />à la commande</td>';
@@ -49,7 +51,7 @@ class CVueListePizza
 	    $i++;
 	    
 	    $strListe .= '<tr>';
-	    $strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" value="' . $produit['id_produit'] . '" /></td>';
+	    $strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td>';
 	    $strListe .= '</tr>';
 	    
 	    $DB = new CDB();
@@ -62,7 +64,7 @@ class CVueListePizza
 			    WHERE 
 				p.libelle_produit LIKE "' . $produit['libelle_produit'] . '"');
 	    
-	    $strListe .= '<tr><td>';
+	    $strListe .= '<tr><td><img src="' . $produit['image'] . '" style="max-width:125px" /></td><td>';
 	    $strListeIngredients = '';
 	    
 	    foreach ($ingredients as $ingredient)
@@ -72,10 +74,11 @@ class CVueListePizza
 	    
 	    $strListeIngredients = substr($strListeIngredients, 0, -2);
 	    $strListe .= $strListeIngredients;
-	    $strListe .= '</td></tr>';
+	    $strListe .= '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" value="' . $produit['id_produit'] . '" /></td></tr>';
 	}
 
 	$strListe .= '</table>';
+	$strListe .= '<br />';
 	$strListe .= '<input type="reset" name="annuler" value="Annuler" />';
 	$strListe .= '<input type="submit" name="commander" value="Commander" />';
 	$strListe .= '</form>';
