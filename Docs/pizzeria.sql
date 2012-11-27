@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mar 27 Novembre 2012 à 09:27
+-- Généré le : Mar 27 Novembre 2012 à 13:09
 -- Version du serveur: 5.1.44
 -- Version de PHP: 5.3.1
 
@@ -120,6 +120,7 @@ INSERT INTO `Composer` (`id_pizza`, `id_ingredient`) VALUES
 CREATE TABLE IF NOT EXISTS `Comprendre` (
   `id_commande` int(12) NOT NULL AUTO_INCREMENT,
   `id_produit` int(11) NOT NULL,
+  `quantite` int(2) NOT NULL,
   PRIMARY KEY (`id_commande`,`id_produit`),
   KEY `FK_Comprendre_id_produit` (`id_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -226,13 +227,13 @@ CREATE TABLE IF NOT EXISTS `Produits` (
 --
 
 INSERT INTO `Produits` (`id_produit`, `libelle_produit`, `prix_produit`, `description`, `image`, `id_type_produit`, `id_pizza`) VALUES
-(22, 'Margherita', 7, NULL, 'images/margherita.jpg', 0, 1),
-(23, 'Peppina', 7.5, NULL, 'images/peppina.jpg', 0, 2),
-(24, 'La Cannibale', 7.5, NULL, 'images/cannibale.jpg', 0, 3),
-(25, 'La Reine', 8, NULL, 'images/reine.jpg', 0, 4),
-(27, 'La 4 Fromages', 8, NULL, 'images/4_fromages.jpg', 0, 6),
-(32, 'La Savoyarde', 8, NULL, 'images/savoyarde.jpg', 0, 11),
-(34, 'Extravaganzza', 8, NULL, 'images/extravaganzza.jpg', 0, 13);
+(22, 'Margherita', 7, NULL, 'images/margherita.jpg', 1, 1),
+(23, 'Peppina', 7.5, NULL, 'images/peppina.jpg', 1, 2),
+(24, 'La Cannibale', 7.5, NULL, 'images/cannibale.jpg', 1, 3),
+(25, 'La Reine', 8, NULL, 'images/reine.jpg', 1, 4),
+(27, 'La 4 Fromages', 8, NULL, 'images/4_fromages.jpg', 1, 6),
+(32, 'La Savoyarde', 8, NULL, 'images/savoyarde.jpg', 1, 11),
+(34, 'Extravaganzza', 8, NULL, 'images/extravaganzza.jpg', 1, 13);
 
 -- --------------------------------------------------------
 

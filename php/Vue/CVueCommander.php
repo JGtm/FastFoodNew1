@@ -22,7 +22,7 @@ class CVueCommander
 
     function ValiderPanier()
     {
-	// Array ( [quantite_22> 1 
+	// Array ( [quantite_22> 1
 	//	[quantite_23> 1 
 	//	[quantite_24> 1 
 	//	[id_pizza_4] => 25 [quantite_25> 1 
@@ -30,6 +30,11 @@ class CVueCommander
 	//	[id_pizza_6] => 32 [quantite_32> 1 
 	//	[quantite_34> 1
 	//	[commander] => Commander ) 
+	
+	foreach($_POST AS $post => $value)
+	{
+	    
+	}
 	
 	return print_r($_POST);
     }

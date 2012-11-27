@@ -33,7 +33,10 @@ class CVueListePizza
 				p.id_produit,
 				p.image
 			    FROM 
-				produits p');
+				produits p
+				INNER JOIN types_produits t ON t.id_type_produit = p.id_type_produit
+			    WHERE
+				t.libelle_type_produit LIKE "Pizza"');
 
 	$strListe = '<form method="POST" action="?page=commander">';
 	$strListe .= '<table>';
@@ -75,7 +78,7 @@ class CVueListePizza
 
 	    $strListeIngredients = substr($strListeIngredients, 0, -2);
 	    $strListe .= $strListeIngredients;
-	    $strListe .= '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" name="id_pizza_' . $i . '" value="' . $produit['id_produit'] . '" /></td>';
+	    $strListe .= '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" name="id_pizza" value="' . $produit['id_produit'] . '" /></td>';
 	    $strListe .= '<td><select name="quantite_' . $produit['id_produit'] . '>';
 
 	    for ($j = 0; $j < 6; $j++)
