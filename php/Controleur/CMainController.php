@@ -5,6 +5,7 @@ require_once('php/Modele/CDB.php');
 require_once('php/Modele/CEmploye.php');
 require_once('php/Modele/CClient.php');
 require_once('php/Modele/CAdministrateur.php');
+require_once('php/Modele/CModelePizza.php');
 
 class CMainController
 {
@@ -39,42 +40,24 @@ class CMainController
         {
             case 'adminProduit':
                 require_once('php/Vue/CVueProduit.php');
-                $this->view = new CVueProduit;
-                if ($params == '')
+                $this->view = new CVueProduit();
+                if ($_POST['Types_produits']==1)
                 {
-                 if ($_POST['Types_produits']) 
-                 {
-                     $produit=$this->view->addTypeProduit();
-                     $this->view->addTypeProduit();
-                     
-                 }
-                }
-                if ($params == 'pizza')
-                {
-                    $this->view = new CPizza();
-
-                    if ($_POST['libelle_produit'])
-                    {
-//                        $pizza = $this->view->addPizza();
-//                        $pizza->create();
-                    }
+                    $pizza = $this->view->addPizza();
+                    $pizza->create();
+                       
                 }
                 else
+                if ($_POST['Types_produits']!=null)
                 {
-                    //$this->view = new CModeleProduit();
-
-                    if ($_POST['libelle_produit'])
-                    {
-//                        $pizza = $this->view->addProduit();
-//                        $pizza->create();
-                    }
+                    $produit = $this->view->addProduit();
+                    $produit->create();
+                       
                 }
+                
+ 
+                
 
-
-                break;
-            case 'inscription':
-                require_once('php/Vue/CVueInscription.php');
-                $this->view = new CVueInscription();
                 break;
 
             case 'inscription':

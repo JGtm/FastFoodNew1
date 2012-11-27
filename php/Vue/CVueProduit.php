@@ -11,7 +11,6 @@
  * @author Nh3
  */
 require_once 'CHtml.php';
-require_once 'php/Modele/CModelePizza.php';
 require_once 'php/Modele/CModeleProduit.php';
 
 class CVueProduit
@@ -26,65 +25,52 @@ class CVueProduit
     {
 
 
-        $html=$this->genererFormulaireType();
+        $array = array
+            (
+            'Nom du produit :' => "libelle_produit",
+            'Prix :' => "prix_produit",
+            'Description :' => "description",
+            'Image :' => "image",
+        );
+        $lien = '';
 
+
+        $html = $this->genererFormulaire($array, $lien);
+
+        if (isset($_GET['error']))
+        {
+            $html .= $this->getError();
+        }
 
         return $html;
     }
 
-    public function addTypeProduit()
+    public function addPizza()
     {
-
-        $newProduit = new CModeleProduit(
-                        '',
-                        '',
-                        '',
-                        '',
-                        $_POST['type_produit']
+        $newPizza = new CModelePizza(
+                        $_POST['libelle_produit'],
+                        $_POST['prix_produit'],
+                        $_POST['description'],
+                        $_POST['image'],
+                        1,
+                        Array($_POST['ingredient1'], $_POST['ingredient2'], $_POST['ingredient3'], $_POST['ingredient4']),
+                        $_POST['base']
         );
-        $type = $newProduit->getType_produit();
-        return $type;
+
+        return $newPizza;
     }
 
     public function addProduit()
     {
-
         $newProduit = new CModeleProduit(
                         $_POST['libelle_produit'],
                         $_POST['prix_produit'],
                         $_POST['description'],
                         $_POST['image'],
-                        $_POST['type_produit']
+                        $_POST['Types_produits']
         );
 
         return $newProduit;
-    }
-
-    private function genererFormulaireType()
-    {
-        $formulaire = '';
-        $formulaire.='<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_POST['libelle_type_produit'] . '">';
-        $formulaire.='<table border = "0">';
-        $formulaire.='<tbody>';
-        $formulaire.='<tr>';
-        $formulaire.='<td><label>';
-        $formulaire.= 'Type de produit';
-        $formulaire.='</label></td>';
-        $formulaire.='<td>';
-        $formulaire.= $this->genererListeType('Types_produits');
-        $formulaire.='</td>';   
-        $formulaire.='<td><input type="submit" value="Ok" /></td>';
-        $formulaire.='</tr>';
-        $formulaire.='</tbody>';
-        $formulaire.='</table>';
-        $formulaire.='</form>';
-        
-           
-        
-   
-        
-   
-        return $formulaire;
     }
 
     private function genererFormulaire($array, $lien)
@@ -93,6 +79,12 @@ class CVueProduit
         $formulaire.='<form method="POST" action="?page=' . $_GET['page'] . '">';
         $formulaire.='<table border = "0">';
         $formulaire.='<tbody>';
+
+        $formulaire.='<tr>';
+        $formulaire.= "<td><label>Type de produit :</label></td>";
+        $formulaire.= $this->genererListeType('Types_produits');
+        $formulaire.= "<td></td>";
+        $formulaire.='</tr>';
 
         foreach ($array as $key => $value)
         {
@@ -112,18 +104,23 @@ class CVueProduit
         }
 
 
+
+
+
         $formulaire.='<tr>';
+        $formulaire.= "<td><label>Les bases :</label></td>";
+        $formulaire.=$this->genererListeBase('base');
+        $formulaire.= "<td colspan='3'><label >Si une base est selectionné vous creer une pizza</label></td>";
+        $formulaire.='</tr>';
+
+        $formulaire.='<tr>';
+        $formulaire.= "<td><label>Les ingredients :</label></td>";
+
         for ($i = 0; $i < 4; $i++)
         {
             $formulaire.= $this->genererListeIngredients('ingredient' . $i);
         }
         $formulaire.='</tr>';
-
-
-        $formulaire.='<tr>';
-        $formulaire.= $this->genererListeBase('base');
-        $formulaire.='</tr>';
-
 
         $formulaire.='<tr>';
         $formulaire.='<td><input type="submit" value="Ajouter" /></td>';
@@ -175,13 +172,33 @@ class CVueProduit
         return $strListe;
     }
 
+    function genererListePizza($className)
+    {
+
+        $DB = new CDB();
+        $result = $DB->selects('*', 'Produits');
+
+        $strListe = '<table>';
+
+        foreach ($result as $produit)
+        { // chaque ligne du tableau correspondra à un editeur
+            $strListe .= '<tr>';
+            $strListe .='<td>' . $produit['libelle_produit'] . '</td><td>' . $produit['prix_produit'] . '</td><td>' . $produit['id_produit'] . '</td>';
+            $strListe .= '</tr>';
+        }
+
+        $strListe .= '</table>';
+
+        return $strListe;
+    }
+
     function genererListeType($className)
     {
 
         $DB = new CDB();
         $result = $DB->selects('*', 'Types_produits');
 
-        $strListe = "<td><select  class=" . $className . " name=\"" . $className . "\">";
+        $strListe = "<td><select class=" . $className . " name=\"" . $className . "\">";
         $strListe.='<option selected value="0">Types déja existantes        </option>';
 
         foreach ($result as $produit)

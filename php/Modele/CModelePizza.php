@@ -34,7 +34,7 @@ class CModelePizza extends CModeleProduit
         $pid = $this->DB->insert_id();
         $this->DB->insert('Produits',
                 'id_produit, libelle_produit, prix_produit, description, image, id_type_produit, id_pizza',
-                '"", "'.$this->libelle.'", '.$this->prix.', "'.$this->description.'", "'.$this->image.'", '.$this->type_produit.', '.$pid[0]
+                '"", "'.$this->libelle.'", "'.$this->prix.'", "'.$this->description.'", "'.$this->image.'", '.$this->type_produit.', '.$pid[0]
          );
                 
         foreach($this->ingredients as $val) {
