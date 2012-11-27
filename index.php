@@ -11,3 +11,8 @@ require_once 'php/Controleur/CMainController.php';
   $mainController->render();
 
 ?>		
+<script>
+
+    document.getElementById("formId").
+
+</script>

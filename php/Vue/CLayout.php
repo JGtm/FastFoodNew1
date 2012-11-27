@@ -48,7 +48,7 @@ class CLayout
         $tabLiens = array(
           'Accueil' => 'index.php',
           'Les employes' => '?page=employe',
-          'Les produits' => '?page=produit',
+          'Les produits' => '?page=adminProduit',
           'Les Ingredients '=>'?page=adminIngreBase',
           'Les pizza' => '?page=adminPizza',
           'menu' => '?page=listePizza', 

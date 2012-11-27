@@ -37,12 +37,51 @@ class CMainController
         //$this->params = $params;
         switch ($this->id)
         {
-                            
+            case 'adminProduit':
+                require_once('php/Vue/CVueProduit.php');
+                $this->view = new CVueProduit;
+                if ($params == '')
+                {
+                 if ($_POST['Types_produits']) 
+                 {
+                     $produit=$this->view->addTypeProduit();
+                     $this->view->addTypeProduit();
+                     
+                 }
+                }
+                if ($params == 'pizza')
+                {
+                    $this->view = new CPizza();
+
+                    if ($_POST['libelle_produit'])
+                    {
+//                        $pizza = $this->view->addPizza();
+//                        $pizza->create();
+                    }
+                }
+                else
+                {
+                    //$this->view = new CModeleProduit();
+
+                    if ($_POST['libelle_produit'])
+                    {
+//                        $pizza = $this->view->addProduit();
+//                        $pizza->create();
+                    }
+                }
+
+
+                break;
+            case 'inscription':
+                require_once('php/Vue/CVueInscription.php');
+                $this->view = new CVueInscription();
+                break;
+
             case 'inscription':
                 require_once('php/Vue/CVueInscription.php');
                 $this->view = new CVueInscription();
 
-                if (($_POST['mdp'])&&($_POST['email']))
+                if (($_POST['mdp']) && ($_POST['email']))
                 {
                     $user = $this->view->addUser();
                     $user->create();
@@ -89,19 +128,19 @@ class CMainController
                     }
                 }
                 break;
-	
-	case 'listePizza':
+
+            case 'listePizza':
                 require_once('php/Vue/CVueListePizza.php');
                 $this->view = new CVueListePizza();
-	break;
-	case 'listeEmploye':
+                break;
+            case 'listeEmploye':
                 require_once('php/Vue/CVueListeEmploye.php');
                 $this->view = new CVueListeEmploye();
-	break;
-	case 'commander':
+                break;
+            case 'commander':
                 require_once('php/Vue/CVueCommander.php');
                 $this->view = new CVueCommander();
-	break;
+                break;
             case 'adminPizza':
                 require_once('php/Vue/CPizza.php');
                 $this->view = new CPizza();
@@ -113,7 +152,7 @@ class CMainController
                 }
 
                 break;
-                 case 'inscription':
+            case 'inscription':
                 require_once('php/Vue/CVueInscription.php');
                 $this->view = new CVueInscription();
                 break;
