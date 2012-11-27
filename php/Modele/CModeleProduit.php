@@ -12,6 +12,7 @@
  */
 class CModeleProduit
 {
+
     protected $id = '';
     protected $libelle = '';
     protected $prix = '';
@@ -19,9 +20,9 @@ class CModeleProduit
     protected $image = '';
     protected $type_produit = '';
     protected $pizza = '';
-    protected $DB='';
-    
-    function __construct($libelle='', $prix='', $description='', $image='', $type_produit='')
+    protected $DB = '';
+
+    function __construct($libelle = '', $prix = '', $description = '', $image = '', $type_produit = '')
     {
         $this->libelle = $libelle;
         $this->prix = $prix;
@@ -29,16 +30,18 @@ class CModeleProduit
         $this->image = $image;
         $this->type_produit = $type_produit;
     }
-    
-        public function create() {
-            
-            $this->DB= new CDB();
-        $this->DB->insert('Produits',
-                'id_produit, libelle_produit, prix_produit, description, image, id_type_produit',
-                '"", "'.$this->libelle.'", "'.$this->prix.'", "'.$this->description.'", "'.$this->image.'", '.$this->type_produit
-         );
-                
-        
+
+    public function create()
+    {
+
+        $this->DB = new CDB();
+        $this->DB->insert('Produits', 'id_produit, libelle_produit, prix_produit, description, image, id_type_produit', '"", "' . $this->libelle . '", "' . $this->prix . '", "' . $this->description . '", "' . $this->image . '", ' . $this->type_produit
+        );
+    }
+
+    public function delete()
+    {
+
     }
 
     public function getId()
@@ -110,7 +113,6 @@ class CModeleProduit
     {
         $this->pizza = $pizza;
     }
-
 
 }
 

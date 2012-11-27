@@ -47,7 +47,7 @@ class CLayout
       case 'SBO':
         $tabLiens = array(
           'Accueil' => 'index.php',
-          'Les employes' => '?page=employe',
+          'Les employes' => '?page=listeEmploye',
           'Les produits' => '?page=adminProduit',
           'Les ingredients '=>'?page=adminIngreBase',
           'menu' => '?page=listePizza', 

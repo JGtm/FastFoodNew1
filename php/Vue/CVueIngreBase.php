@@ -72,7 +72,7 @@ class CVueIngreBase
 
 
 
-        $formulaire.='<tr><td colspan="6"><h3 class="titre">Ajout/Suppression de types de produit d\'ingredients </h3></td><tr>';
+        $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de produit d\'ingredients </h3></td><tr>';
         $formulaire.='<tr>';
         $formulaire.='<td><label>';
         $formulaire.= 'Nom de l\'ingredient:';

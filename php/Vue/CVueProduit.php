@@ -41,6 +41,9 @@ class CVueProduit
         {
             $html .= $this->getError();
         }
+        
+        $html.='<br>';
+        $html.=$this->formulaireSuppProduit();
 
         return $html;
     }
@@ -79,7 +82,7 @@ class CVueProduit
         $formulaire.='<form method="POST" action="?page=' . $_GET['page'] . '">';
         $formulaire.='<table border = "0">';
         $formulaire.='<tbody>';
-
+        $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout de produit </h3></td><tr>';
         $formulaire.='<tr>';
         $formulaire.= "<td><label>Type de produit :</label></td>";
         $formulaire.= $this->genererListeType('Types_produits');
@@ -123,7 +126,7 @@ class CVueProduit
         $formulaire.='</tr>';
 
         $formulaire.='<tr>';
-        $formulaire.='<td><input type="submit" value="Ajouter" /></td>';
+        $formulaire.='<td><input type="submit" name="add" value="Ajouter" /></td>';
 
         $formulaire.='</tbody>';
         $formulaire.='</table>';
@@ -209,6 +212,42 @@ class CVueProduit
         $strListe.="</select></td>";
 
         return $strListe;
+    }
+    
+        function genererListeProduit($className)
+    {
+
+        $DB = new CDB();
+        $result = $DB->selects('*', 'Produits');
+
+        $strListe = "<td><select class=" . $className . " name=\"" . $className . "\">";
+        $strListe.='<option selected value="0">Produits déja existants        </option>';
+
+        foreach ($result as $produit)
+        { // chaque ligne du tableau correspondra à un editeur
+            $strListe.='<option value="' . $produit['id_produit'] . '">' . $produit['libelle_produit'] . '</option>';
+        }
+
+        $strListe.="</select></td>";
+
+        return $strListe;
+    }
+    
+    function formulaireSuppProduit()
+    {
+        $formulaire.='<form method="POST" action="?page=' . $_GET['page'] . '">';
+        $formulaire.='<table border = "0">';
+        $formulaire.='<tr><td colspan="7"><h3 class="titre">Suppression de produit </h3></td><tr>';
+        $formulaire.='<tr>';
+        $formulaire.='<td><label>';
+        $formulaire.= 'Nom du produit';
+        $formulaire.='</label></td>';
+        $formulaire.= $this->genererListeProduit('Produits');
+        $formulaire.='<td><input type="submit" name="del" value="Supprimer produit" /></td></tr>';
+        $formulaire.='</table>';
+        $formulaire.='</form>';
+        
+        return $formulaire;
     }
 
 }

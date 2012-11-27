@@ -9,9 +9,11 @@ class CEmploye extends CUtilisateur
     // --- ATTRIBUTES ---
     // --- OPERATIONS ---
 
-    function __construct($nom, $prenom, $email, $mdp)
+    function __construct($nom='', $prenom='', $email='', $mdp='')
     {
         parent::__construct($nom, $prenom, $email, $mdp, 'BO');
+ 
+
     }
 
     public function updateEtatCommande()

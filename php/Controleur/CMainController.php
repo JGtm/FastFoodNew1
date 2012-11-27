@@ -41,18 +41,23 @@ class CMainController
             case 'adminProduit':
                 require_once('php/Vue/CVueProduit.php');
                 $this->view = new CVueProduit();
-                if ($_POST['Types_produits']==1)
+                if (isset($_POST["add"]))
                 {
-                    $pizza = $this->view->addPizza();
-                    $pizza->create();
-                       
+                    if ($_POST['Types_produits'] == 1)
+                    {
+                        $pizza = $this->view->addPizza();
+                        $pizza->create();
+                    }
+                    else
+                    if ($_POST['Types_produits'] != null)
+                    {
+                        $produit = $this->view->addProduit();
+                        $produit->create();
+                    }
                 }
-                else
-                if ($_POST['Types_produits']!=null)
+                if (isset($_POST["del"]))
                 {
-                    $produit = $this->view->addProduit();
-                    $produit->create();
-                       
+ 
                 }
                 break;
 
@@ -111,6 +116,7 @@ class CMainController
             case 'listePizza':
                 require_once('php/Vue/CVueListePizza.php');
                 $this->view = new CVueListePizza();
+
                 break;
             case 'listeEmploye':
                 require_once('php/Vue/CVueListeEmploye.php');
@@ -120,7 +126,7 @@ class CMainController
                 require_once('php/Vue/CVueCommander.php');
                 $this->view = new CVueCommander();
                 break;
-            
+
             case 'inscription':
                 require_once('php/Vue/CVueInscription.php');
                 $this->view = new CVueInscription();
