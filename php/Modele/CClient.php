@@ -9,8 +9,6 @@ class CClient extends CUtilisateur
     // --- ASSOCIATIONS ---
     // generateAssociationEnd : 
     // --- ATTRIBUTES ---
-
-    private $id = '';
     private $adresse = '';
     private $code_postal = '';
     private $telephone = '';
@@ -21,14 +19,14 @@ class CClient extends CUtilisateur
     {
         parent::__construct($nom, $prenom, $email, $mdp, 'FO');
                 
-        $this->nom = $_SESSION['nom'];
-        $this->prenom = $_SESSION['prenom'];
-        $this->id = $_SESSION['id_utilisateur'];
-        $this->email = $_SESSION['email'];
-        $this->adresse = $_SESSION['adresse'];
-        $this->code_postal = $_SESSION['code_postal'];
-        $this->ville = $_SESSION['ville'];
-        $this->telephone = $_SESSION['telephone'];
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->email = $email;
+        $this->adresse = $adresse;
+        $this->code_postal = $code_postal;
+        $this->ville = $ville;
+        $this->telephone = $telephone;
+        $this->mdp=$mdp;
         
     }
 
@@ -36,12 +34,20 @@ class CClient extends CUtilisateur
     {
         $bdd = new CDB();
         $table='Utilisateurs';
-        $champs='id_utilisateur,email,mdp,nom,prenom,adresse,code_postal,ville,telephone,qualite';
+        $champs="id_utilisateur,email,mdp,nom,prenom,adresse,code_postal,ville,telephone,qualite";
         $values= "'','".$this->email."','".$this->mdp."','".$this->nom."','".$this->prenom."','".$this->adresse."','".$this->code_postal."','".$this->ville."','".$this->telephone."','".$this->qualite."'";
         
         $bdd->insert($table, $champs, $values);
 
     }
+//        public function create()
+//    {
+//
+//        $table = 'Bases';
+//        $champs = "id_base,libelle_base";
+//        $value = "'','" . $this->libelle_base . "'";
+//        $this->DB->insert($table, $champs, $value);
+//    }
     
 
     public function getAdresse()

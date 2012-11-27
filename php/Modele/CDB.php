@@ -85,7 +85,6 @@ class CDB
     {
         $cnx = $this->connect();
         $requete="INSERT INTO $table ($champs) VALUES ($values)";
-              echo $requete;
         $sql = $cnx->prepare($requete);
         $sql->execute();
 	$cnx = NULL;
