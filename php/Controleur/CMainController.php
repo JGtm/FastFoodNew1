@@ -6,6 +6,8 @@ require_once('php/Modele/CEmploye.php');
 require_once('php/Modele/CClient.php');
 require_once('php/Modele/CAdministrateur.php');
 require_once('php/Modele/CModelePizza.php');
+require_once('php/Modele/CModeleCommande.php');
+require_once('php/Modele/CModeleComprendre.php');
 
 class CMainController
 {
@@ -41,8 +43,16 @@ class CMainController
 	    case 'listeProduit':
 		require_once('php/Vue/CVueListeProduit.php');
 		$this->view = new CVueListeProduit();
+                if (isset($_POST["id_produit"]))
+		{
+                    $commande=new CModeleCommande();
+                    $commande->ajoutProduit($_POST[id_produit], $_POST[quantite]);
+		}
+                
 		break;
 
+                
+                
 	    case 'adminProduit':
 		require_once('php/Vue/CVueProduit.php');
 		$this->view = new CVueProduit();

@@ -101,7 +101,7 @@ class CVueListeProduit
 		}
 
 		$strListe .= '</select></td>';
-		$strListe .= '<td><input type="submit" name="' . $produit['libelle_produit'] . '" value="Ajouter à la commande" /></td>';
+		$strListe .= '<td><input type="submit" name="' . $produit['id_produit'] . '" value="Ajouter à la commande" /></td>';
 		$strListe .= '</form>';
 		$strListe .= '</tr>';
 	    }
