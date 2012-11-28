@@ -152,6 +152,7 @@ class CVueContact
 	$text = stripslashes($text);
 	$text = htmlspecialchars($text, ENT_QUOTES); // converts to string with " and ' as well
 	$text = nl2br($text);
+	
 	return $text;
     }
 
@@ -162,6 +163,7 @@ class CVueContact
     function IsEmail($email)
     {
 	$pattern = "^([a-z0-9_]|\\-|\\.)+@(([a-z0-9_]|\\-)+\\.)+[a-z]{2,7}$";
+	
 	return (eregi($pattern, $email)) ? true : false;
     }
 

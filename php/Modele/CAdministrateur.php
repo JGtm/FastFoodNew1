@@ -14,11 +14,11 @@ class CAdministrateur extends CUtilisateur
     // --- OPERATIONS ---
     public function __construct($nom = '', $prenom = '', $email = '', $mdp = '')
     {
-        parent::__construct($nom, $prenom, $email, $mdp, 'SBO');
+	parent::__construct($nom, $prenom, $email, $mdp, 'SBO');
 	$this->nom = $_SESSION['nom'];
-        $this->prenom = $_SESSION['prenom'];
-        $this->id = $_SESSION['id_utilisateur'];
-        $this->email = $_SESSION['email'];
+	$this->prenom = $_SESSION['prenom'];
+	$this->id = $_SESSION['id_utilisateur'];
+	$this->email = $_SESSION['email'];
     }
 
     public static function getInstance()
@@ -31,6 +31,7 @@ class CAdministrateur extends CUtilisateur
 	}
 	else
 	    echo "<br />La classe est deja instanciee";
+	
 	return self::$instance;
     }
 
@@ -38,9 +39,6 @@ class CAdministrateur extends CUtilisateur
     {
 	trigger_error('Le clonage est interdit.', E_USER_ERROR);
     }
-
-   
-        
 
 }
 

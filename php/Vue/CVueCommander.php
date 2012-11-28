@@ -30,12 +30,12 @@ class CVueCommander
 	//	[id_pizza_6] => 32 [quantite_32> 1 
 	//	[quantite_34> 1
 	//	[commander] => Commander ) 
-	
-	foreach($_POST AS $post => $value)
+
+	foreach ($_POST AS $post => $value)
 	{
 	    
 	}
-	
+
 	return print_r($_POST);
     }
 

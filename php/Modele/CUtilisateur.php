@@ -1,4 +1,5 @@
 <?php
+
 require_once 'CDB.php';
 
 class CUtilisateur
@@ -15,7 +16,7 @@ class CUtilisateur
 
     // --- OPERATIONS ---
     //---Constructeur---
-    public function __construct($nom='', $prenom='', $email='', $mdp='', $qualite='')
+    public function __construct($nom = '', $prenom = '', $email = '', $mdp = '', $qualite = '')
     {
 	$this->nom = $nom;
 	$this->prenom = $prenom;
@@ -23,7 +24,7 @@ class CUtilisateur
 	$this->mdp = $mdp;
 	$this->qualite = $qualite;
     }
-  
+
     //---Getter Setter---
     public function getNom()
     {
