@@ -32,7 +32,7 @@ class CVueContact
 	 * *******************************************************************************************
 	 */
 	//destinataire est votre adresse mail. Pour envoyer à plusieurs à la fois, séparez-les par une virgule
-	$destinataire = 'pizza_insta@insta.fr';
+	$destinataire = 't.lemporte@insta.fr';
 
 	// copie ? (envoie une copie au visiteur)
 	$copie = 'oui';
@@ -102,8 +102,6 @@ class CVueContact
 		{
 		    $form .= '<p>' . $message_non_envoye . '</p>' . "\n";
 		}
-
-		$message = (isset($_POST['message'])) ? $this->Rec($_POST['message']) : ''; // réécriture pour la BDD
 	    }
 	    else
 	    {

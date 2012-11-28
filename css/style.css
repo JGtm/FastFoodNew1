@@ -275,6 +275,32 @@ a#totop:hover {
     margin: 0 5px 0 4px;
     text-transform: uppercase;
 }
+div.itemCommentsForm form input#submitCommentButton, input[type="submit"], input[type="reset"], button.button {
+    background: url("../images/button_tail.png") repeat-x scroll 0 0 transparent;
+    border: medium none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
+    display: inline-block;
+    font-weight: bold;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 23px;;
+    margin-left: 5px;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba(171, 104, 37, 0.58);
+    color: #ffffff;
+    text-align: right;
+}
 div.itemCommentsForm form input#submitCommentButton:hover, input[type="submit"]:hover, button.button:hover {
-    color:#ffffff;
+    background: url("../images/button_tail.png") repeat-x scroll 0 -36px transparent;
+    border: medium none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.24);
+    display: inline-block;
+    font-weight: bold;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 23px;
+    margin-left: 5px;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba(171, 104, 37, 0.58);
+    color: #ffffff;
 }
