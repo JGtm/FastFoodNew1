@@ -23,10 +23,10 @@ class CLayout
 	$html = '<!DOCTYPE html>';
 	$html .= '<html>';
 	$html .= $this->CHtml->head('Pizza INSTA');
-	$html .= $this->CHtml->header($this->getMenuItems($_COOKIE['session']));
+	$html .= $this->CHtml->header($this->getMenuItems($_SESSION['qualite']));
 	$html .= $this->CHtml->corps('', $this->content);
 	$html .= $this->CHtml->ancre();
-	$html .= $this->CHtml->footer($this->getMenuItems($_COOKIE['session']));
+	$html .= $this->CHtml->footer($this->getMenuItems($_SESSION['qualite']));
 	$html .= '</html>';
 
 	return $html;
@@ -51,7 +51,6 @@ class CLayout
 		    'Les employes' => '?page=listeEmploye',
 		    'Les produits' => '?page=adminProduit',
 		    'Les ingredients ' => '?page=adminIngreBase',
-		    'menu' => '?page=listePizza',
 		    'Se deconnecter' => '?action=deconnection&page=' . $_GET['page']
 		);
 		break;
@@ -59,10 +58,9 @@ class CLayout
 	    case 'FO':
 		$tabLiens = array(
 		    'Accueil' => 'index.php',
-		    'menu' => '?page=listePizza',
-		    'nos produits' => '?page=listeProduit',
-		    'Ma commande' => '?page=commande',
-		    'contact' => '?page=contact ',
+		    'Nos produits' => '?page=listeProduit',
+		    'Ma commande' => '?page=commander',
+		    'Contact' => '?page=contact ',
 		    'Se deconnecter' => '?action=deconnection&page=' . $_GET['page']
 		);
 		break;
@@ -70,8 +68,8 @@ class CLayout
 	    default:
 		$tabLiens = array(
 		    'Accueil' => 'index.php',
-		    'menu' => '?page=listePizza',
-		    'contact' => ' ?page=contact',
+		    'Nos produits' => '?page=listeProduit',
+		    'Contact' => ' ?page=contact',
 		    'S\'identifier' => '?page=authentification'
 		);
 		break;

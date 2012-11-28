@@ -14,6 +14,7 @@ class CClient extends CUtilisateur
     private $telephone = '';
     private $ville = '';
 
+
     // --- OPERATIONS ---
     function __construct($nom = '', $prenom = '', $email = '', $mdp = '', $adresse = '', $code_postal = '', $ville = '', $telephone = '')
     {
@@ -27,6 +28,8 @@ class CClient extends CUtilisateur
 	$this->ville = $ville;
 	$this->telephone = $telephone;
 	$this->mdp = $mdp;
+        
+
     }
 
     function create()
@@ -78,6 +81,7 @@ class CClient extends CUtilisateur
     {
 	$this->ville = $ville;
     }
+
 
 }
 

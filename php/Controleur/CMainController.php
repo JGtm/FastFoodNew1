@@ -17,11 +17,12 @@ class CMainController
     private $layout;
     private $view;
     private $user;
+    private $commmande;
 
     function __construct()
     {
 	$this->db = new CDB();
-	$user = $this->connect();
+	$this->user = $this->connect();
 
 	if (isset($_GET['action']) && $_GET['action'])
 	{
@@ -31,7 +32,7 @@ class CMainController
 	    }
 	}
 
-	$this->layout = new CLayout($user);
+	$this->layout = new CLayout($this->user);
     }
 
     public function setPage($id = '', $params = '')
@@ -40,19 +41,19 @@ class CMainController
 	//$this->params = $params;
 	switch ($this->id)
 	{
+            
 	    case 'listeProduit':
 		require_once('php/Vue/CVueListeProduit.php');
 		$this->view = new CVueListeProduit();
-                if (isset($_POST["id_produit"]))
+//                if (isset($_POST["id_produit"]))
 		{
-                    $commande=new CModeleCommande();
-                    $commande->ajoutProduit($_POST[id_produit], $_POST[quantite]);
+                    $commande=new CModeleCommande('','','','','',$_SESSION['id_utilisateur']);
+                    $commande->ajoutProduit($_POST['id_produit'], $_POST['quantite']);
+                    var_dump($commande);
 		}
                 
 		break;
-
-                
-                
+              
 	    case 'adminProduit':
 		require_once('php/Vue/CVueProduit.php');
 		$this->view = new CVueProduit();
@@ -128,11 +129,6 @@ class CMainController
 		}
 		break;
 
-	    case 'listePizza':
-		require_once('php/Vue/CVueListePizza.php');
-		$this->view = new CVueListePizza();
-		break;
-
 	    case 'contact':
 		require_once('php/Vue/CVueContact.php');
 		$this->view = new CVueContact();
@@ -161,12 +157,17 @@ class CMainController
 	    case 'commander':
 		require_once('php/Vue/CVueCommander.php');
 		$this->view = new CVueCommander();
-		break;
+                if (isset($_SESSION['commande'])) 
+                {
+                    $this->commande= unserialize($_SESSION['commande']);
+                }
+                else
+                {
+                    $this->commande = new CModeleCommande('','','','','',$_SESSION['id_utilisateur']);
+                    $_SESSION['commande']= serialize ($this->commande);
+                }
+                    break;
 
-	    case 'inscription':
-		require_once('php/Vue/CVueInscription.php');
-		$this->view = new CVueInscription();
-		break;
 	    case 'authentification':
 		require_once('php/Vue/CAuthentication.php');
 		$this->view = new CAuthentication();
@@ -244,17 +245,20 @@ class CMainController
 		{
 		    setcookie("session", $user[0]['qualite'], time() + 1800, null, null, false, false);
 
-		    $_SESSION['nom'] = $user['nom'];
-		    $_SESSION['prenom'] = $user['prenom'];
-		    $_SESSION['id_utilisateur'] = $user['id_utilisateur'];
-		    $_SESSION['email'] = $user['email'];
-		    $_SESSION['adresse'] = $user['adresse'];
-		    $_SESSION['code_postal'] = $user['code_postal'];
-		    $_SESSION['ville'] = $user['ville'];
-		    $_SESSION['telephone'] = $user['telephone'];
-		    $_SESSION['qualite'] = $user['qualite'];
+		    $_SESSION['nom'] = $user[0]['nom'];
+		    $_SESSION['prenom'] = $user[0]['prenom'];
+		    $_SESSION['id_utilisateur'] = $this->user[0]['id_utilisateur'];
+		    $_SESSION['email'] = $user[0]['email'];
+		    $_SESSION['adresse'] = $user[0]['adresse'];
+		    $_SESSION['code_postal'] = $user[0]['code_postal'];
+		    $_SESSION['ville'] = $user[0]['ville'];
+		    $_SESSION['telephone'] = $user[0]['telephone'];
+		    $_SESSION['qualite'] = $user[0]['qualite'];
+                    $_SESSION['id_utilisateur'] = $user[0]['id_utilisateur'];
+
 
 		    header('Location:' . $_SERVER['PHP_SELF'] . '?page=' . $_GET['page']);
+ 
 		}
 		else
 		{

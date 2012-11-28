@@ -16,7 +16,7 @@ class CModeleCommande
     private $tab_id_produit;
     private $etat;
     
-    private $lesComprendres;
+    private $lesComprendres=array();
 
     function __construct($id_commande = '', $date_debut = '', $date_fin = '', $montant = '', $produits = '', $id_utilisateur = '')
     {

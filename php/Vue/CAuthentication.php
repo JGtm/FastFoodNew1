@@ -29,7 +29,7 @@ class CAuthentication
 	    'e-Mail :' => "email",
 	    'Mot de Passe :' => "mdp",
 	);
-	$lien = '';
+	$lien = "CHome";
 
 	$html = $this->CHtml->genererFormulaire($array, $lien);
 

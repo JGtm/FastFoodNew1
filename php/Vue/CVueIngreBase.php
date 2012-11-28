@@ -69,7 +69,7 @@ class CVueIngreBase
 	$formulaire.='<td><input type="submit" name="add" value="Ajouter type de produit" /></td>';
 	$formulaire.='<td><input type="submit" name="del" value="Supprimer type de produit" /></td></tr>';
 
-	$formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de produit d\'ingredients </h3></td><tr>';
+	$formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression d\'ingredients </h3></td><tr>';
 	$formulaire.='<tr>';
 	$formulaire.='<td><label>';
 	$formulaire.= 'Nom de l\'ingredient:';
@@ -83,7 +83,7 @@ class CVueIngreBase
 	$formulaire.='<td><input type="submit" name="add" value="Ajouter Ingredient" /></td>';
 	$formulaire.='<td><input type="submit" name="del" value="Supprimer Ingredient" /></td></tr>';
 
-	$formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de bases </h3></td><tr>';
+	$formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de bases à pizza</h3></td><tr>';
 	$formulaire.='<tr>';
 	$formulaire.='<td><label>';
 	$formulaire.= 'Nom de la base:';

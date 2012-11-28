@@ -14,7 +14,14 @@ class CHome
     {
 
 	$html = '<div class="contenu">';
-	$html .= '<h3 class="title">Bienvenue chez Pizza INSTA</h3>';
+        if ( isset($_SESSION['nom']) && $_SESSION['nom']!='')
+        {
+	$html .= '<h3 class="title">Bienvenue chez Pizza INSTA Mr '.$_SESSION['nom'].'</h3>';
+        }
+        else
+        {
+        $html .= '<h3 class="title">Bienvenue chez Pizza INSTA </h3>';
+        }
 	$html .= '<p>Venez manger nos sublimes pizzas super vénère!</p>';
 	$html .= '<img src="images/pizza.jpg" />';
 	$html .= '<ul>';
@@ -24,6 +31,7 @@ class CHome
 	$html .= '<li>Puis voilà</li>';
 	$html .= '</ul>';
 	$html .= '</div>';
+        
 	
 	return $html;
     }

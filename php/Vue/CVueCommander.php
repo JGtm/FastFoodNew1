@@ -1,6 +1,7 @@
 <?php
 
 class CVueCommander
+
 {
 
     function __construct()
@@ -10,7 +11,7 @@ class CVueCommander
 
     public function getHtml()
     {
-	$html = $this->ValiderPanier();
+	//$html = $this->affichageCommande();
 
 	if (isset($_GET['error']))
 	{
@@ -19,17 +20,16 @@ class CVueCommander
 
 	return $html;
     }
+    
+    function affichageCommande()
+    {
+        $commande='';
+        
+        return $commande;
+    }
 
     function ValiderPanier()
     {
-	// Array ( [quantite_22> 1
-	//	[quantite_23> 1 
-	//	[quantite_24> 1 
-	//	[id_pizza_4] => 25 [quantite_25> 1 
-	//	[id_pizza_5] => 27 [quantite_27> 1 
-	//	[id_pizza_6] => 32 [quantite_32> 1 
-	//	[quantite_34> 1
-	//	[commander] => Commander ) 
 
 	foreach ($_POST AS $post => $value)
 	{

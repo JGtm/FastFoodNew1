@@ -14,6 +14,7 @@ class CUtilisateur
     protected $mdp = '';
     protected $qualite = '';
 
+
     // --- OPERATIONS ---
     //---Constructeur---
     public function __construct($nom = '', $prenom = '', $email = '', $mdp = '', $qualite = '')
