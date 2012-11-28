@@ -57,8 +57,8 @@ class CLayout
       case 'FO':
         $tabLiens = array(
           'Accueil' => 'index.php',
-          'A propos' => '',
           'menu' => '?page=listePizza',
+          'nos produits' => '?page=listeProduit',
           'Ma commande' => '?page=commande',
           'contact' => '?page=contact ',
           'Se deconnecter' =>'?action=deconnection&page='.$_GET['page']
@@ -67,7 +67,6 @@ class CLayout
       default:
         $tabLiens = array(
           'Accueil' => 'index.php',
-          'A propos' => '',
           'menu' => '?page=listePizza',
           'contact' => ' ?page=contact',
           'S\'identifier' =>'?page=authentification'

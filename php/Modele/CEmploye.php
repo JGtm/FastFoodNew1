@@ -2,6 +2,7 @@
 
 require_once('CUtilisateur.php');
 require_once('CDB.php');
+require_once('CModeleCommande.php');
 
 class CEmploye extends CUtilisateur
 {
@@ -34,6 +35,10 @@ class CEmploye extends CUtilisateur
         $DB->delete($table,$condition);
     }
     
+     public function changerEtatCmd($commande,$etat)
+    {
+        $commande->setEtat($etat);
+    }
 
 }
 

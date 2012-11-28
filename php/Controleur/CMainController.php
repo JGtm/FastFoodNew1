@@ -38,6 +38,13 @@ class CMainController
         //$this->params = $params;
         switch ($this->id)
         {
+            
+              case 'listeProduit':
+                require_once('php/Vue/CVueListeProduit.php');
+                $this->view = new CVueListeProduit();
+
+                break;
+
             case 'adminProduit':
                 require_once('php/Vue/CVueProduit.php');
                 $this->view = new CVueProduit();
@@ -182,7 +189,8 @@ class CMainController
     private function disconnect()
     {
         setcookie("session", null);
-        header('Location:' . $_SERVER['PHP_SELF'] . '?page=' . $_GET['page']);
+        header('Location:' . $_SERVER['PHP_SELF'] );//. '?page=' . $_GET['page']);
+        session_destroy();
     }
 
     private function connect()

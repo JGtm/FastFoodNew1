@@ -132,7 +132,7 @@ class CVueIngreBase
         $result = $DB->selects('*', 'Bases');
 
         $strListe = "<td><select class=" . $className . " name=\"" . $className . "\">";
-        $strListe.='<option selected value="0">Bases déja existantes        </option>';
+        $strListe.='<option selected value="0">Bases déja existantes</option>';
 
         foreach ($result as $produit)
         { // chaque ligne du tableau correspondra à un editeur
@@ -151,7 +151,7 @@ class CVueIngreBase
         $result = $DB->selects('*', 'Types_produits');
 
         $strListe = "<td><select class=" . $className . " name=\"" . $className . "\">";
-        $strListe.='<option selected value="0">Types déja existantes        </option>';
+        $strListe.='<option selected value="0">Types déja existantes</option>';
 
         foreach ($result as $produit)
         { // chaque ligne du tableau correspondra à un editeur
