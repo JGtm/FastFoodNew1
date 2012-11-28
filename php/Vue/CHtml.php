@@ -90,7 +90,7 @@ class CHtml
     }
   public function nav($liens)
   {
-  	$nav .= '<ul>';
+  	$nav = '<ul>';
   	foreach ($liens AS $titreLien => $lien)
   	{
 	    $nav .= '<li><a href="' . $lien . '">' . $titreLien . '</a></li>';

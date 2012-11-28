@@ -60,7 +60,7 @@ class CLayout
           'A propos' => '',
           'menu' => '?page=listePizza',
           'Ma commande' => '?page=commande',
-          'contact' => ' ',
+          'contact' => '?page=contact ',
           'Se deconnecter' =>'?action=deconnection&page='.$_GET['page']
         );
         break;
@@ -69,7 +69,7 @@ class CLayout
           'Accueil' => 'index.php',
           'A propos' => '',
           'menu' => '?page=listePizza',
-          'contact' => ' ',
+          'contact' => ' ?page=contact',
           'S\'identifier' =>'?page=authentification'
         );
         break;
