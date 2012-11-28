@@ -96,11 +96,11 @@ class CVueContact
 		// Envoi du mail
 		if (mail($cible, $objet, $message, $headers))
 		{
-		    $form .= '<p>' . $message_envoye . '</p>' . "\n";
+		    return '<p>' . $message_envoye . '</p>' . "\n";
 		}
 		else
 		{
-		    $form .= '<p>' . $message_non_envoye . '</p>' . "\n";
+		    return '<p>' . $message_non_envoye . '</p>' . "\n";
 		}
 	    }
 	    else
