@@ -48,12 +48,8 @@ class CVueListePizza
 	$strListe .= '<td>Quantité</td>';
 	$strListe .= '</tr>';
 
-	$i = 0;
-
 	foreach ($result as $produit)
 	{
-	    $i++;
-
 	    $strListe .= '<tr>';
 	    $strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td>';
 	    $strListe .= '</tr>';
