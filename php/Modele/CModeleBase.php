@@ -10,25 +10,25 @@ class CModeleBase
 
     function __construct($libelle_base)
     {
-        $this->libelle_base = $libelle_base;
-        $this->DB = new CDB();
+	$this->libelle_base = $libelle_base;
+	$this->DB = new CDB();
     }
 
     public function create()
     {
 
-        $table = 'Bases';
-        $champs = "id_base,libelle_base";
-        $value = "'','" . $this->libelle_base . "'";
-        $this->DB->insert($table, $champs, $value);
+	$table = 'Bases';
+	$champs = "id_base,libelle_base";
+	$value = "'','" . $this->libelle_base . "'";
+	$this->DB->insert($table, $champs, $value);
     }
-    
+
     public function delete()
     {
 
-        $table = 'Bases';
-        $condition = 'id_base ='.$_POST['Bases'];
-        $this->DB->delete($table,$condition);
+	$table = 'Bases';
+	$condition = 'id_base =' . $_POST['Bases'];
+	$this->DB->delete($table, $condition);
     }
 
 }

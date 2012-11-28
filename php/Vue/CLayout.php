@@ -5,77 +5,81 @@ require_once 'CHtml.php';
 class CLayout
 {
 
-  private $CHtml;
-  private $content;
+    private $CHtml;
+    private $content;
 
-  function __construct()
-  {
-    $this->CHtml = new CHtml();
-  }
-
-  public function setContent($content) 
-  {
-    $this->content = $content;
-  }
-
-  public function render() {
-    $html = '<!DOCTYPE html>';
-    $html .= '<html>';
-    $html .= $this->CHtml->head('Pizza INSTA');
-    $html .= $this->CHtml->header($this->getMenuItems($_COOKIE['session']));
-    
-    $html .= $this->CHtml->corps('', $this->content);
-    
-    $html .= $this->CHtml->ancre();
-    $html .= $this->CHtml->footer($this->getMenuItems($_COOKIE['session']));
-    $html .= '</html>';
-
-    return $html;
-
-  }
-  
-  public function getMenuItems($rank = '') {
-    $tabLiens =  '';
-    switch ($rank) {
-      case 'BO':
-        $tabLiens = array(
-          'Accueil' => 'index.php',
-          'Gestion des commandes' => '?page=gestioncommande',
-          'Se deconnecter' =>'?action=deconnection&page='.$_GET['page']
-        );
-        break;
-      case 'SBO':
-        $tabLiens = array(
-          'Accueil' => 'index.php',
-          'Les employes' => '?page=listeEmploye',
-          'Les produits' => '?page=adminProduit',
-          'Les ingredients '=>'?page=adminIngreBase',
-          'menu' => '?page=listePizza', 
-          'Se deconnecter' =>'?action=deconnection&page='.$_GET['page']
-        );
-        break;
-      case 'FO':
-        $tabLiens = array(
-          'Accueil' => 'index.php',
-          'menu' => '?page=listePizza',
-          'nos produits' => '?page=listeProduit',
-          'Ma commande' => '?page=commande',
-          'contact' => '?page=contact ',
-          'Se deconnecter' =>'?action=deconnection&page='.$_GET['page']
-        );
-        break;
-      default:
-        $tabLiens = array(
-          'Accueil' => 'index.php',
-          'menu' => '?page=listePizza',
-          'contact' => ' ?page=contact',
-          'S\'identifier' =>'?page=authentification'
-        );
-        break;
+    function __construct()
+    {
+	$this->CHtml = new CHtml();
     }
 
-    return $tabLiens;
-  }
+    public function setContent($content)
+    {
+	$this->content = $content;
+    }
+
+    public function render()
+    {
+	$html = '<!DOCTYPE html>';
+	$html .= '<html>';
+	$html .= $this->CHtml->head('Pizza INSTA');
+	$html .= $this->CHtml->header($this->getMenuItems($_COOKIE['session']));
+	$html .= $this->CHtml->corps('', $this->content);
+	$html .= $this->CHtml->ancre();
+	$html .= $this->CHtml->footer($this->getMenuItems($_COOKIE['session']));
+	$html .= '</html>';
+
+	return $html;
+    }
+
+    public function getMenuItems($rank = '')
+    {
+	$tabLiens = '';
+	switch ($rank)
+	{
+	    case 'BO':
+		$tabLiens = array(
+		    'Accueil' => 'index.php',
+		    'Gestion des commandes' => '?page=gestioncommande',
+		    'Se deconnecter' => '?action=deconnection&page=' . $_GET['page']
+		);
+		break;
+	    
+	    case 'SBO':
+		$tabLiens = array(
+		    'Accueil' => 'index.php',
+		    'Les employes' => '?page=listeEmploye',
+		    'Les produits' => '?page=adminProduit',
+		    'Les ingredients ' => '?page=adminIngreBase',
+		    'menu' => '?page=listePizza',
+		    'Se deconnecter' => '?action=deconnection&page=' . $_GET['page']
+		);
+		break;
+	    
+	    case 'FO':
+		$tabLiens = array(
+		    'Accueil' => 'index.php',
+		    'menu' => '?page=listePizza',
+		    'nos produits' => '?page=listeProduit',
+		    'Ma commande' => '?page=commande',
+		    'contact' => '?page=contact ',
+		    'Se deconnecter' => '?action=deconnection&page=' . $_GET['page']
+		);
+		break;
+	    
+	    default:
+		$tabLiens = array(
+		    'Accueil' => 'index.php',
+		    'menu' => '?page=listePizza',
+		    'contact' => ' ?page=contact',
+		    'S\'identifier' => '?page=authentification'
+		);
+		break;
+	}
+
+	return $tabLiens;
+    }
+
 }
 
 ?>

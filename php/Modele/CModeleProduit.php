@@ -24,94 +24,94 @@ class CModeleProduit
 
     function __construct($libelle = '', $prix = '', $description = '', $image = '', $type_produit = '')
     {
-        $this->libelle = $libelle;
-        $this->prix = $prix;
-        $this->description = $description;
-        $this->image = $image;
-        $this->type_produit = $type_produit;
+	$this->libelle = $libelle;
+	$this->prix = $prix;
+	$this->description = $description;
+	$this->image = $image;
+	$this->type_produit = $type_produit;
     }
 
     public function create()
     {
 
-        $this->DB = new CDB();
-        $this->DB->insert('Produits', 'id_produit, libelle_produit, prix_produit, description, image, id_type_produit', '"", "' . $this->libelle . '", "' . $this->prix . '", "' . $this->description . '", "' . $this->image . '", ' . $this->type_produit
-        );
+	$this->DB = new CDB();
+	$this->DB->insert('Produits', 'id_produit, libelle_produit, prix_produit, description, image, id_type_produit', '"", "' . $this->libelle . '", "' . $this->prix . '", "' . $this->description . '", "' . $this->image . '", ' . $this->type_produit
+	);
     }
 
     public function delete()
     {
-
+	
     }
 
     public function getId()
     {
-        return $this->id;
+	return $this->id;
     }
 
     public function setId($id)
     {
-        $this->id = $id;
+	$this->id = $id;
     }
 
     public function getLibelle()
     {
-        return $this->libelle;
+	return $this->libelle;
     }
 
     public function setLibelle($libelle)
     {
-        $this->libelle = $libelle;
+	$this->libelle = $libelle;
     }
 
     public function getPrix()
     {
-        return $this->prix;
+	return $this->prix;
     }
 
     public function setPrix($prix)
     {
-        $this->prix = $prix;
+	$this->prix = $prix;
     }
 
     public function getDescription()
     {
-        return $this->description;
+	return $this->description;
     }
 
     public function setDescription($description)
     {
-        $this->description = $description;
+	$this->description = $description;
     }
 
     public function getImage()
     {
-        return $this->image;
+	return $this->image;
     }
 
     public function setImage($image)
     {
-        $this->image = $image;
+	$this->image = $image;
     }
 
     public function getType_produit()
     {
-        return $this->type_produit;
+	return $this->type_produit;
     }
 
     public function setType_produit($type_produit)
     {
-        $this->type_produit = $type_produit;
+	$this->type_produit = $type_produit;
     }
 
     public function getPizza()
     {
-        return $this->pizza;
+	return $this->pizza;
     }
 
     public function setPizza($pizza)
     {
-        $this->pizza = $pizza;
+	$this->pizza = $pizza;
     }
 
 }
