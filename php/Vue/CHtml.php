@@ -74,7 +74,7 @@ class CHtml
 	$formulaire.='<td>';
         if ($_GET['page']=='authentification')
         {
-        $formulaire.='<a href="?page=inscription" >pas encore inscrit ?</a>';
+        $formulaire.='<a href="?page=inscription" >Pas encore inscrit ?</a>';
         }
         $formulaire.='</td>';
         $formulaire.='<td align="right">';
