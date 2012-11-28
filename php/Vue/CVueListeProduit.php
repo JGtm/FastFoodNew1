@@ -29,6 +29,11 @@ class CVueListeProduit
 
     function genererListeProduit($id_produit)
     {
+	if(!isset($id_produit))
+	{
+	    $id_produit =1;
+	}
+	
 	$DB = new CDB();
 	$requete = 'SELECT DISTINCT
 				p.libelle_produit, 
@@ -47,7 +52,7 @@ class CVueListeProduit
 	    $strListe .= '<table>';
 	    $strListe .= '<thead>';
 	    $strListe .= '<tr>';
-	    $strListe .= '<th>Nos produits</th>';
+	    $strListe .= '<th>Nos pizzas</th>';
 	    $strListe .= '<th></th>';
 	    $strListe .= '<th  width="70">Prix (en €)</th>';
 	    $strListe .= '<th>Quantité</th>';
