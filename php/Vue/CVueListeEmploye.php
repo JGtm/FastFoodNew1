@@ -29,6 +29,7 @@ class CVueListeEmploye
     }
 
 
+
     function genererListeEmploye()
     {
 
@@ -58,13 +59,13 @@ class CVueListeEmploye
         foreach ($result as $employe)
         {
             $strListe .= '<tr>';
-            $strListe .='<td>' . $employe['nom'] . '</td><td>' . $employe['prenom'] . '</td><td>' . $employe['email'] . '</td><td>' . $employe['mdp'] . '</td><td><input type="checkbox" value="' . $employe['id_utilisateur'] . '" /></td>';
+            $strListe .='<td>' . $employe['nom'] . '</td><td>' . $employe['prenom'] . '</td><td>' . $employe['email'] . '</td><td>' . $employe['mdp'] . '</td><td><input type="checkbox" name="selected" value="' . $employe['id_utilisateur'] . '" /></td>';
             $strListe .= '</tr>';
         }
 
         $strListe .= '</table>';
         $strListe .= '<input type="reset" name="annuler" value="Annuler" />';
-        $strListe .= '<input type="submit" name="virer" value="Virer" />';
+        $strListe .= '<input type="submit" name="del" value="Supprimer" />';
         $strListe .= '</form>';
 
         return $strListe;

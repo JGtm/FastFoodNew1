@@ -27,10 +27,10 @@ class CVueProduit
 
         $array = array
             (
-            'Nom du produit :' => "libelle_produit",
-            'Prix :' => "prix_produit",
-            'Description :' => "description",
-            'Image :' => "image",
+            'Nom du produit:' => "libelle_produit",
+            'Prix:' => "prix_produit",
+            'Description:' => "description",
+            'Image:' => "image",
         );
         $lien = '';
 
@@ -82,9 +82,9 @@ class CVueProduit
         $formulaire.='<form method="POST" action="?page=' . $_GET['page'] . '">';
         $formulaire.='<table border = "0">';
         $formulaire.='<tbody>';
-        $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout de produit </h3></td><tr>';
+        $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout de produit</h3></td><tr>';
         $formulaire.='<tr>';
-        $formulaire.= "<td><label>Type de produit :</label></td>";
+        $formulaire.= "<td><label>Type de produit:</label></td>";
         $formulaire.= $this->genererListeType('Types_produits');
         $formulaire.= "<td></td>";
         $formulaire.='</tr>';
@@ -97,7 +97,7 @@ class CVueProduit
             $formulaire.='</label></td>';
             if ($value == 'description')
             {
-                $formulaire.='<td colspan="3"><textarea name="' . $value . '"></textarea></td>';
+                $formulaire.='<td><textarea name="' . $value . '"></textarea></td>';
             }
             else
             {
@@ -111,13 +111,13 @@ class CVueProduit
 
 
         $formulaire.='<tr>';
-        $formulaire.= "<td><label>Les bases :</label></td>";
+        $formulaire.= "<td><label>Les bases:</label></td>";
         $formulaire.=$this->genererListeBase('base');
         $formulaire.= "<td colspan='3'><label >Si une base est selectionné vous creer une pizza</label></td>";
         $formulaire.='</tr>';
 
         $formulaire.='<tr>';
-        $formulaire.= "<td><label>Les ingredients :</label></td>";
+        $formulaire.= "<td><label>Les ingredients:</label></td>";
 
         for ($i = 0; $i < 4; $i++)
         {

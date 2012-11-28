@@ -1,12 +1,11 @@
 <?php
 
 require_once('CUtilisateur.php');
+require_once('CDB.php');
 
 class CEmploye extends CUtilisateur
 {
 
-    // --- ATTRIBUTES ---
-    private $DB;
     // --- OPERATIONS ---
 
     function __construct($nom='', $prenom='', $email='', $mdp='')
@@ -27,7 +26,14 @@ class CEmploye extends CUtilisateur
         
         $this->DB->insert($table, $champs, $values);        
     }
-
+    public static function delete($id)
+    {
+        $table = 'Utilisateurs';
+        $condition = 'id_utilisateur ='.$id;
+        $DB = new CDB();
+        $DB->delete($table,$condition);
+    }
+    
 
 }
 

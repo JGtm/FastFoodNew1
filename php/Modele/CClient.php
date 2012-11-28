@@ -38,7 +38,6 @@ class CClient extends CUtilisateur
         $values= "'','".$this->email."','".$this->mdp."','".$this->nom."','".$this->prenom."','".$this->adresse."','".$this->code_postal."','".$this->ville."','".$this->telephone."','".$this->qualite."'";
         
         $bdd->insert($table, $champs, $values);
-
     }
 
 

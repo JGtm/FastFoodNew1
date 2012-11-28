@@ -127,9 +127,14 @@ class CMainController
                     {
                         $employe = $this->view->addEmploye();
                         $employe->create();
-                    }
-                     
-    
+                    }    
+                }
+                if (isset($_POST["del"]))
+                {
+                    if ($_POST['selected'])
+                    {
+                        CEmploye::delete($_POST['selected']);
+                    }    
                 }
                 
                 break;
