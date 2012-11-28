@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mer 28 Novembre 2012 à 11:08
+-- Généré le : Mer 28 Novembre 2012 à 14:17
 -- Version du serveur: 5.1.44
 -- Version de PHP: 5.3.1
 
@@ -213,14 +213,11 @@ CREATE TABLE IF NOT EXISTS `Produits` (
   `description` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
   `image` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
   `id_type_produit` int(11) NOT NULL,
-  `id_pizza` int(11) NOT NULL,
+  `id_pizza` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_produit`),
-  UNIQUE KEY `id_produit_2` (`id_produit`),
   KEY `FK_Produits_id_type_produit` (`id_type_produit`),
-  KEY `id_pizza` (`id_pizza`),
-  KEY `id_pizza_2` (`id_pizza`),
-  KEY `id_produit` (`id_produit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+  KEY `id_pizza` (`id_pizza`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
 
 --
 -- Contenu de la table `Produits`
@@ -233,7 +230,12 @@ INSERT INTO `Produits` (`id_produit`, `libelle_produit`, `prix_produit`, `descri
 (25, 'La Reine', 8, NULL, 'images/reine.jpg', 1, 4),
 (27, 'La 4 Fromages', 8, NULL, 'images/4_fromages.jpg', 1, 6),
 (32, 'La Savoyarde', 8, NULL, 'images/savoyarde.jpg', 1, 11),
-(34, 'Extravaganzza', 8, NULL, 'images/extravaganzza.jpg', 1, 13);
+(34, 'Extravaganzza', 8, NULL, 'images/extravaganzza.jpg', 1, 13),
+(35, 'Coca', 3, NULL, 'images/coca.jpg', 3, 0),
+(36, 'Pepsi', 4, NULL, 'images/pepsi.jpg', 3, 0),
+(37, 'Perrier', 2.5, NULL, 'images/perrier.png', 3, NULL),
+(38, 'Brownie', 3, NULL, 'images/brownie.jpg', 4, NULL),
+(39, 'Cookie', 1, NULL, 'images/cookie.jpg', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -245,7 +247,7 @@ CREATE TABLE IF NOT EXISTS `Types_produits` (
   `id_type_produit` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_type_produit` varchar(45) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id_type_produit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `Types_produits`
@@ -253,7 +255,8 @@ CREATE TABLE IF NOT EXISTS `Types_produits` (
 
 INSERT INTO `Types_produits` (`id_type_produit`, `libelle_type_produit`) VALUES
 (1, 'Pizza'),
-(3, 'Boisson');
+(3, 'Boisson'),
+(4, 'Dessert');
 
 -- --------------------------------------------------------
 
