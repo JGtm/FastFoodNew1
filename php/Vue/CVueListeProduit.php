@@ -46,24 +46,19 @@ class CVueListeProduit
 
 	if ($id_produit == 1)
 	{
-	    $strListe = '<form method="POST" action="?page=commander">';
 	    $strListe .= '<table>';
 	    $strListe .= '<thead>';
 	    $strListe .= '<tr>';
-	    $strListe .= '<td colspan="3">Les produits </td>';
-	    $strListe .= '<td> </td>';
-	    $strListe .= '<td>Prix <br />(en €)</td>';
-	    $strListe .= '<td>Ajouter <br />à la commande</td>';
-	    $strListe .= '<td>Quantité</td>';
+	    $strListe .= '<th>Nos produits</th>';
+	    $strListe .= '<th></th>';
+	    $strListe .= '<th  width="70">Prix (en €)</th>';
+	    $strListe .= '<th>Quantité</th>';
+	    $strListe .= '<th>Ajouter à la commande</th>';
 	    $strListe .= '</tr>';
 	    $strListe .= '</thead>';
 
-	    $i = 0;
-
 	    foreach ($result as $produit)
 	    {
-		$i++;
-
 		$strListe .= '<tr>';
 		$strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td>';
 		$strListe .= '</tr>';
@@ -86,25 +81,25 @@ class CVueListeProduit
 		    $strListeIngredients .= $ingredient['libelle'] . ', ';
 		}
 
-		$strListeIngredients .= substr($strListeIngredients, 0, -2);
+		$strListeIngredients = substr($strListeIngredients, 0, -2);
 		$strListe .= $strListeIngredients;
-		$strListe .= '</td><td>' . $produit['prix_produit'] . '</td><td><input type="checkbox" name="id_pizza" value="' . $produit['id_produit'] . '" /></td>';
-		$strListe .= '<td><select name="quantite_' . $produit['id_produit'] . '>';
+		$strListe .= '</td><td style="text-align: right; padding: 0 10px;">' . $produit['prix_produit'] . '</td>';
+		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '">';
+		$strListe .= '<td><select name="quantite">';
 
 		for ($j = 0; $j < 6; $j++)
 		{
 		    $strListe.='<option value="' . $j . '">' . $j . '</option>';
 		}
 
-		$strListe.="</select></td>";
+		$strListe .= '</select></td>';
+		$strListe .= '<td><input type="submit" name="' . $produit['libelle_produit'] . '" value="Ajouter à la commande" /></td>';
+		$strListe .= '</form>';
 		$strListe .= '</tr>';
 	    }
 
 	    $strListe .= '</table>';
 	    $strListe .= '<br />';
-	    $strListe .= '<input type="reset" name="annuler" value="Annuler" />';
-	    $strListe .= '<input type="submit" name="commander" value="Commander" />';
-	    $strListe .= '</form>';
 
 	    return $strListe;
 	}
@@ -135,15 +130,11 @@ class CVueListeProduit
 
 
 	foreach ($result as $produit)
-            
 	{ // chaque ligne du tableau correspondra à un editeur
-            $strListe.='<form method="POST" action="?page=' . $_GET['page'] .'&params='.$produit['id_type_produit'].'">';
-            $strListe.='<td><input type="submit" name="selectType" value="'.$produit['libelle_type_produit'].'" /></td>';
-            $strListe.='</form>';
-
+	    $strListe.='<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $produit['id_type_produit'] . '">';
+	    $strListe.='<td><input type="submit" name="selectType" value="' . $produit['libelle_type_produit'] . '" /></td>';
+	    $strListe.='</form>';
 	}
-//need commit
-        
 
 	$strListe.="</td>";
 
