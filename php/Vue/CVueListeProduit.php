@@ -142,6 +142,8 @@ class CVueListeProduit
             $strListe.='</form>';
 
 	}
+//need commit
+        
 
 	$strListe.="</td>";
 
