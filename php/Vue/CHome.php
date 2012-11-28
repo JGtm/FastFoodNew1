@@ -14,7 +14,7 @@ class CHome
     {
 
 	$html = '<div class="contenu">';
-	$html .= '<h2 class="title">Bienvenue chez Pizza INSTA</h3>';
+	$html .= '<h3 class="title">Bienvenue chez Pizza INSTA</h3>';
 	$html .= '<p>Venez manger nos sublimes pizzas super vénère!</p>';
 	$html .= '<img src="images/pizza.jpg" />';
 	$html .= '<ul>';
