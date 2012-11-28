@@ -42,19 +42,19 @@ class CVueListeProduit
 				t.id_type_produit LIKE "' . $id_produit . '"';
 	$result = $DB->requete($requete);
 
-	$strListe .= '<table>';
-	$strListe .= '<thead>';
-	$strListe .= '<tr>';
-	$strListe .= '<th>Nos produits</th>';
-	$strListe .= '<th></th>';
-	$strListe .= '<th  width="70">Prix (en €)</th>';
-	$strListe .= '<th>Quantité</th>';
-	$strListe .= '<th>Ajouter à la commande</th>';
-	$strListe .= '</tr>';
-	$strListe .= '</thead>';
-
 	if ($id_produit == 1)
 	{
+	    $strListe .= '<table>';
+	    $strListe .= '<thead>';
+	    $strListe .= '<tr>';
+	    $strListe .= '<th>Nos produits</th>';
+	    $strListe .= '<th></th>';
+	    $strListe .= '<th  width="70">Prix (en €)</th>';
+	    $strListe .= '<th>Quantité</th>';
+	    $strListe .= '<th>Ajouter à la commande</th>';
+	    $strListe .= '</tr>';
+	    $strListe .= '</thead>';
+
 	    foreach ($result as $produit)
 	    {
 		$strListe .= '<tr>';
@@ -96,15 +96,26 @@ class CVueListeProduit
 		$strListe .= '</tr>';
 	    }
 	}
-	else
+	elseif ($id_produit != '')
 	{
+	    $strListe .= '<table>';
+	    $strListe .= '<thead>';
+	    $strListe .= '<tr>';
+	    $strListe .= '<th>Nos produits</th>';
+	    $strListe .= '<th></th>';
+	    $strListe .= '<th  width="70">Prix (en €)</th>';
+	    $strListe .= '<th>Quantité</th>';
+	    $strListe .= '<th>Ajouter à la commande</th>';
+	    $strListe .= '</tr>';
+	    $strListe .= '</thead>';
+
 	    foreach ($result as $produit)
 	    {
 		$strListe .= '<tr>';
 		$strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td>';
 		$strListe .= '</tr>';
 
-		$strListe .= '<td><img src="' . $produit['image'] . '" style="max-width:125px" /></td>';		
+		$strListe .= '<td><img src="' . $produit['image'] . '" style="max-width:125px" /></td>';
 		$strListe .= '<td></td>';
 		$strListe .= '<td style="text-align: right; padding: 0 10px;">' . $produit['prix_produit'] . '</td>';
 		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '">';
