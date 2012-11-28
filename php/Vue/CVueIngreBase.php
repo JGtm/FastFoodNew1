@@ -60,7 +60,7 @@ class CVueIngreBase
         
         $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de produit </h3></td><tr>';
         $formulaire.='<tr>';
-        $formulaire.='<td><label>';
+        $formulaire.='<td colspan="1"><label>';
         $formulaire.= 'Nom du type:';
         $formulaire.='</label></td>';
         $formulaire.='<td colspan="3"><input type="text" name="libelle_type_produit" /></td>';
@@ -89,14 +89,14 @@ class CVueIngreBase
 
         $formulaire.='<tr><td colspan="7"><h3 class="titre">Ajout/Suppression de types de bases </h3></td><tr>';
         $formulaire.='<tr>';
-        $formulaire.='<td><label>';
+        $formulaire.='<td colspan="1"><label>';
         $formulaire.= 'Nom de la base:';
         $formulaire.='</label></td>';
         $formulaire.='<td colspan="3"><input type="text" name="libelle_base" /></td>';
         $formulaire.='<td></td><td></td>';
         $formulaire.= $this->genererListeBase('Bases');
-        $formulaire.='<td><input type="submit" name="add" value="AjouterBase        " /></td>';
-        $formulaire.='<td><input type="submit" name="del" value="Supprimer Base        " /></td></tr>';
+        $formulaire.='<td><input type="submit" name="add" value="AjouterBase" /></td>';
+        $formulaire.='<td><input type="submit" name="del" value="Supprimer Base" /></td></tr>';
 
 
 
