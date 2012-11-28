@@ -84,8 +84,8 @@ class CMainController
                     }
                     if ($_POST['libelle'] && $_POST['prix'])
                     {
-                        $ingredient = $this->view->addIngredient();
-                        $ingredient->create();
+                        $employe = $this->view->addEmploye();
+                        $employe->create();
                     }
                     if ($_POST['libelle_type_produit'])
                     {
@@ -121,6 +121,17 @@ class CMainController
             case 'listeEmploye':
                 require_once('php/Vue/CVueListeEmploye.php');
                 $this->view = new CVueListeEmploye();
+                if (isset($_POST["add"]))
+                {
+                    if ($_POST['email'] && $_POST['mdp'])
+                    {
+                        $employe = $this->view->addEmploye();
+                        $employe->create();
+                    }
+                     
+    
+                }
+                
                 break;
             case 'commander':
                 require_once('php/Vue/CVueCommander.php');

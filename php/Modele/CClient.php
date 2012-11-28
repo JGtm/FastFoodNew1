@@ -40,15 +40,7 @@ class CClient extends CUtilisateur
         $bdd->insert($table, $champs, $values);
 
     }
-//        public function create()
-//    {
-//
-//        $table = 'Bases';
-//        $champs = "id_base,libelle_base";
-//        $value = "'','" . $this->libelle_base . "'";
-//        $this->DB->insert($table, $champs, $value);
-//    }
-    
+
 
     public function getAdresse()
     {

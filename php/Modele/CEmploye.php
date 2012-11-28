@@ -5,26 +5,29 @@ require_once('CUtilisateur.php');
 class CEmploye extends CUtilisateur
 {
 
-    // --- ASSOCIATIONS ---
     // --- ATTRIBUTES ---
+    private $DB;
     // --- OPERATIONS ---
 
     function __construct($nom='', $prenom='', $email='', $mdp='')
     {
         parent::__construct($nom, $prenom, $email, $mdp, 'BO');
+        
  
 
     }
 
-    public function updateEtatCommande()
+    public function create()
     {
+
+        $this->DB = new CDB();
+        $table='Utilisateurs';
+        $champs="id_utilisateur,email,mdp,nom,prenom,adresse,code_postal,ville,telephone,qualite";
+        $values= "'','".$this->email."','".$this->mdp."','".$this->nom."','".$this->prenom."','','','','','".$this->qualite."'";
         
+        $this->DB->insert($table, $champs, $values);        
     }
 
-    public function updateEmploye()
-    {
-        
-    }
 
 }
 
