@@ -54,10 +54,14 @@ class CVueListeProduit
 	    $strListe .= '<th>Ajouter à la commande</th>';
 	    $strListe .= '</tr>';
 	    $strListe .= '</thead>';
+	    
+	    $i = 0;
 
 	    foreach ($result as $produit)
 	    {
-		$strListe .= '<tr>';
+		$i ++;
+		
+		$strListe .= '<tr id="' . $i . '">';
 		$strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td>';
 		$strListe .= '</tr>';
 
@@ -82,7 +86,7 @@ class CVueListeProduit
 		$strListeIngredients = substr($strListeIngredients, 0, -2);
 		$strListe .= $strListeIngredients;
 		$strListe .= '</td><td style="text-align: right; padding: 0 10px;">' . $produit['prix_produit'] . '</td>';
-		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '">';
+		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '#' . $i . '">';
 		$strListe .= '<td><select name="quantite">';
 
 		for ($j = 0; $j < 6; $j++)
@@ -108,17 +112,21 @@ class CVueListeProduit
 	    $strListe .= '<th>Ajouter à la commande</th>';
 	    $strListe .= '</tr>';
 	    $strListe .= '</thead>';
+	    
+	    $i = 0;
 
 	    foreach ($result as $produit)
 	    {
-		$strListe .= '<tr>';
+		$i ++;
+		
+		$strListe .= '<tr id="' . $i . '">';
 		$strListe .='<td class="listePizza">' . $produit['libelle_produit'] . '</td>';
 		$strListe .= '</tr>';
 
 		$strListe .= '<td><img src="' . $produit['image'] . '" style="max-width:125px" /></td>';
 		$strListe .= '<td></td>';
 		$strListe .= '<td style="text-align: right; padding: 0 10px;">' . $produit['prix_produit'] . '</td>';
-		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '">';
+		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '#' . $i . '">';
 		$strListe .= '<td><select name="quantite">';
 
 		for ($j = 0; $j < 6; $j++)
