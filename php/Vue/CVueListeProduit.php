@@ -32,6 +32,7 @@ class CVueListeProduit
 	if(!isset($id_produit))
 	{
 	    $id_produit =1;
+	    $_GET['params'] = 1;
 	}
 	
 	$DB = new CDB();
