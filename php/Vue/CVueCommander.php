@@ -1,7 +1,9 @@
 <?php
-require_once 'php/Modele/CModeleCommande.php';
-class CVueCommander
 
+require_once 'php/Modele/CModeleCommande.php';
+require_once 'php/Modele/CDB.php';
+
+class CVueCommander
 {
 
     function __construct()
@@ -12,7 +14,7 @@ class CVueCommander
     public function getHtml()
     {
 	//$html = $this->affichageCommande();
-        $html.= $this->affichageCommande();
+	$html = $this->affichageCommande();
 
 	if (isset($_GET['error']))
 	{
@@ -21,57 +23,67 @@ class CVueCommander
 
 	return $html;
     }
-    
+
     function affichageCommande()
     {
-        $commande='';
-        //var_dump($_SESSION['commande']);
+	$objectCommande = unserialize($_SESSION['commande']);
+	$produitCmd = $objectCommande->getLesComprendres();
 
-        $objectCommande=unserialize($_SESSION['commande']);
-        $produitCmd=$objectCommande->getLesComprendres();
-        
-        
-        $commande.='<table>';
-        $commande.='<thead>';
-        $commande.='<tr>';
-        $commande.='<th>';
-        $commande.='<label>id_produit</label>';
-        $commande.='</th>';
-        $commande.='<th>';
-        $commande.='<label>quantite</label>';
-        $commande.='</th>';
-        $commande.='</tr>';
-        $commande.='</thead>';
-        $commande.='<tbody>';
-        foreach ($produitCmd AS $values)
+	foreach ($produitCmd AS $values)
 	{
-	
-        $commande.='<tr>';
-        $commande.='<td>';
-        $commande.='<label>';
-        $commande.= $values->getId_produit();
-        $commande.='</label>';
-        $commande.='</td>';
-        $commande.='<td>';
-        $commande.='<label>';
-        $commande.= $values->getQuantite();
-        $commande.='</label>';
-        $commande.='</td>';
-        $commande.='</tr>';
+	    $DB = new CDB();
+	    $result = $DB->requete('SELECT libelle_produit, prix_produit FROM produits WHERE id_produit = ' . $values->getId_produit());
+
+	    foreach ($result AS $pizza)
+	    {
+		$tabCommande['libelle_produit'] = $pizza['libelle_produit'];
+		$tabCommande['prix_produit'] = $pizza['prix_produit'];
+		$tabCommande['quantite_produit'] = $values->getQuantite();
+	    }
 	}
-        $commande.='</tbody>';
-        $commande.='</table>';
-        
-        
-        return $commande;
+
+	$_SESSION['panier'] [] = $tabCommande;
+
+	$commande = '<table>';
+	$commande .= '<tr>';
+	$commande .= '<th>Vos pizzas sélectionnées</th>';
+	$commande .= '<th></th>';
+	$commande .= '<th  width="70">Prix (en €)</th>';
+	$commande .= '<th>Quantité</th>';
+	$commande .= '<th>Supprimer</th>';
+	$commande .= '</tr>';
+
+	$total = 0;
+
+	foreach ($_SESSION['panier'] AS $listeProduit)
+	{
+	    $commande .= '<tr >';
+	    $commande .='<td class="listePizza">' . $listeProduit['libelle_produit'] . '</td>';
+	    $commande .= '<td></td>';
+	    $commande .= '<td>' . $listeProduit['prix_produit'] . '</td>';
+	    $commande .= '<td>' . $listeProduit['quantite_produit'] . '</td>';
+	    $commande .= '<td>X</td>';
+	    $commande .= '</tr>';
+
+	    $total += floatval($listeProduit['prix_produit']) * floatval($listeProduit['quantite_produit']);
+	}
+
+
+	$commande .= '<tr>';
+	$commande .= '<td>Total</td>';
+	$commande .= '<td></td>';
+	$commande .= '<td>' . $total . '</td>';
+	$commande .= '<td></td>';
+	$commande .= '<td></td>';
+	$commande .= '</tr>';
+	$commande .= '</table>';
+
+	return $commande;
     }
 
     function ValiderPanier()
     {
-
-
-
-	return print_r($_POST);
+	
     }
 
 }
