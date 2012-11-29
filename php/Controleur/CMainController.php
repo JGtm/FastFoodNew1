@@ -41,22 +41,22 @@ class CMainController
 	//$this->params = $params;
 	switch ($this->id)
 	{
-            case 'pizzaPerso':
-                require_once('php/Vue/CVuePizzaPerso.php');
-                $this->view =new CVuePizzaPerso();
-                
-            break;
+	    case 'pizzaPerso':
+		require_once('php/Vue/CVuePizzaPerso.php');
+		$this->view = new CVuePizzaPerso();
+
+		break;
 	    case 'listeProduit':
 		require_once('php/Vue/CVueListeProduit.php');
 		$this->view = new CVueListeProduit();
 //                if (isset($_POST["id_produit"]))
 		{
-                    $commande=new CModeleCommande('','','','','',$_SESSION['id_utilisateur']);
-                    $commande->ajoutProduit($_POST['id_produit'], $_POST['quantite']);
+		    $commande = new CModeleCommande('', '', '', '', '', $_SESSION['id_utilisateur']);
+		    $commande->ajoutProduit($_POST['id_produit'], $_POST['quantite']);
 		}
-                
+
 		break;
-              
+
 	    case 'adminProduit':
 		require_once('php/Vue/CVueProduit.php');
 		$this->view = new CVueProduit();
@@ -90,7 +90,7 @@ class CMainController
 		    $user->create();
 		}
 		break;
-		
+
 	    case 'adminIngreBase':
 		require_once('php/Vue/CVueIngreBase.php');
 		$this->view = new CVueIngreBase();
@@ -160,23 +160,22 @@ class CMainController
 	    case 'commander':
 		require_once('php/Vue/CVueCommander.php');
 		$this->view = new CVueCommander();
-                if (isset($_SESSION['commande']) && $_SESSION['commande']!=null) 
-                {
-                    $this->commande= unserialize($_SESSION['commande']);
-                }
-                else
-                {
-                    $this->commande = new CModeleCommande('','','','','',$_SESSION['id_utilisateur']);
-                    $_SESSION['commande']= serialize ($this->commande);
-                }
-                if (isset($_GET['params']) and isset($_POST['quantite']))
-                {
-		    echo 'too';
-                    $this->commande->ajoutProduit($_GET['params'],$_POST['quantite']);
-                    $_SESSION['commande']=  serialize($this->commande);
-                }
-                
-                    break;
+		if (isset($_SESSION['commande']) && $_SESSION['commande'] != null)
+		{
+		    $this->commande = unserialize($_SESSION['commande']);
+		}
+		else
+		{
+		    $this->commande = new CModeleCommande('', '', '', '', '', $_SESSION['id_utilisateur']);
+		    $_SESSION['commande'] = serialize($this->commande);
+		}
+		if (isset($_GET['params']) and isset($_POST['quantite']))
+		{
+		    $this->commande->ajoutProduit($_GET['params'], $_POST['quantite']);
+		    $_SESSION['commande'] = serialize($this->commande);
+		}
+
+		break;
 
 	    case 'authentification':
 		require_once('php/Vue/CAuthentication.php');
@@ -264,11 +263,10 @@ class CMainController
 		    $_SESSION['ville'] = $user[0]['ville'];
 		    $_SESSION['telephone'] = $user[0]['telephone'];
 		    $_SESSION['qualite'] = $user[0]['qualite'];
-                    $_SESSION['id_utilisateur'] = $user[0]['id_utilisateur'];
+		    $_SESSION['id_utilisateur'] = $user[0]['id_utilisateur'];
 
 
 		    header('Location:' . $_SERVER['PHP_SELF'] . '?page=' . $_GET['page']);
- 
 		}
 		else
 		{
