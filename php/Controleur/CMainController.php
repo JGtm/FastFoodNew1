@@ -49,7 +49,6 @@ class CMainController
 		{
                     $commande=new CModeleCommande('','','','','',$_SESSION['id_utilisateur']);
                     $commande->ajoutProduit($_POST['id_produit'], $_POST['quantite']);
-                    var_dump($commande);
 		}
                 
 		break;
@@ -157,7 +156,7 @@ class CMainController
 	    case 'commander':
 		require_once('php/Vue/CVueCommander.php');
 		$this->view = new CVueCommander();
-                if (isset($_SESSION['commande'])) 
+                if (isset($_SESSION['commande']) && $_SESSION['commande']!=null) 
                 {
                     $this->commande= unserialize($_SESSION['commande']);
                 }
@@ -166,6 +165,13 @@ class CMainController
                     $this->commande = new CModeleCommande('','','','','',$_SESSION['id_utilisateur']);
                     $_SESSION['commande']= serialize ($this->commande);
                 }
+                if (isset($_POST['id_produit']) & isset($_POST['quantite']))
+                {
+
+                    $this->commande->ajoutProduit($_POST['id_produit'],$_POST['quantite']);
+                    $_SESSION['commande']=  serialize($this->commande);
+                }
+                
                     break;
 
 	    case 'authentification':

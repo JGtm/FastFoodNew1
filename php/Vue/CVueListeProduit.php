@@ -92,7 +92,7 @@ class CVueListeProduit
 		$strListeIngredients = substr($strListeIngredients, 0, -2);
 		$strListe .= $strListeIngredients;
 		$strListe .= '</td><td style="text-align: right; padding: 0 10px;">' . $produit['prix_produit'] . '</td>';
-		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '#' . $i . '">';
+		$strListe .= '<form method="POST" action="?page=commander&params=' . $produit['id_produit'] . '">';
 		$strListe .= '<td><select name="quantite">';
 
 		for ($j = 0; $j < 6; $j++)
@@ -101,7 +101,7 @@ class CVueListeProduit
 		}
 
 		$strListe .= '</select></td>';
-		$strListe .= '<td><input type="submit" name="' . $produit['id_produit'] . '" value="Ajouter à la commande" /></td>';
+		$strListe .= '<td><input type="submit" name="id_produit"  value="Ajouter à la commande" /></td>';
 		$strListe .= '</form>';
 		$strListe .= '</tr>';
 	    }
@@ -132,7 +132,7 @@ class CVueListeProduit
 		$strListe .= '<td><img src="' . $produit['image'] . '" style="max-width:125px" /></td>';
 		$strListe .= '<td></td>';
 		$strListe .= '<td style="text-align: right; padding: 0 10px;">' . $produit['prix_produit'] . '</td>';
-		$strListe .= '<form method="POST" action="?page=' . $_GET['page'] . '&params=' . $_GET['params'] . '#' . $i . '">';
+		$strListe .= '<form method="POST" action="?page=commander&params=' . $produit['id_produit']  . '#' . $i . '">';
 		$strListe .= '<td><select name="quantite">';
 
 		for ($j = 0; $j < 6; $j++)
@@ -141,7 +141,7 @@ class CVueListeProduit
 		}
 
 		$strListe .= '</select></td>';
-		$strListe .= '<td><input type="submit" name="' . $produit['id_produit'] . '" value="Ajouter à la commande" /></td>';
+		$strListe .= '<td><input type="submit" name="id_produit" value="Ajouter à la commande" /></td>';
 		$strListe .= '</form>';
 		$strListe .= '</tr>';
 	    }

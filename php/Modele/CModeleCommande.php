@@ -1,6 +1,7 @@
 <?php
 
 require_once 'CModeleProduit.php';
+require_once 'CDB.php';
 
 class CModeleCommande
 {
@@ -13,7 +14,6 @@ class CModeleCommande
     private $montant;
     private $produits;
     private $id_utilisateur;
-    private $tab_id_produit;
     private $etat;
     
     private $lesComprendres=array();
@@ -36,7 +36,8 @@ class CModeleCommande
     function ajoutProduit($id_produit,$quantite)
     {
         $comprendre=new CModeleComprendre($this->id_commande,$id_produit,$quantite);
-	array_push($this->lesComprendres, $comprendre);
+	array_push($this->lesComprendres, serialize($comprendre));
+        
     }
 
     
