@@ -73,7 +73,7 @@ class CVueCommander
 	    }
 	}
 
-	$strListeProduits = substr($strListeProduits, 0, -2);
+	$strListeProduits = substr($strListeProduits, 0, -1);
 
 	$commande .= '<tr>';
 	$commande .= '<td>Total</td>';
@@ -90,14 +90,19 @@ class CVueCommander
 	if (isset($_GET['valider']))
 	{
 	    $DB = new CDB();
-	    $DB->insert('Commandes', 'date_debut, date_fin, montant, produits, id_utilisateur', NOW() . ', ' . NOW() . ', ' . $total . ', ' . $strListeProduits . ', ' . $_SESSION['id_utilisateur']);
-	    $last_id = $DB->insert_id();
-	    
-	    foreach ($result AS $pizza)
-	    {	    
-		$DB->insert('Comprendre', 'id_commande, id_produit, quantite', $last_id . ', ' . $values->getId_produit() . ', ' . $values->getQuantite());
+	    $DB->insert('Commandes', 'date_debut, date_fin, montant, produits, id_utilisateur', 'NOW(), NOW(), ' . $total . ', "' . $strListeProduits . '", ' . $_SESSION['id_utilisateur']);
+	    $last_id = $DB->insert_id_commandes();
+
+	    foreach ($produitCmd AS $values)
+	    {
+		$DB = new CDB();
+		$result = $DB->requete('SELECT libelle_produit, prix_produit FROM produits WHERE id_produit = ' . $values->getId_produit());
+		foreach ($result AS $pizza)
+		{
+		    $DB->insert('Comprendre', 'id_commande, id_produit, quantite', $last_id . ', ' . $values->getId_produit() . ', ' . $values->getQuantite());
+		}
 	    }
-	    
+
 	    return '<p>Commande effectuée!</p>';
 	}
 

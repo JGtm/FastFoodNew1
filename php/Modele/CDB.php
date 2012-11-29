@@ -30,7 +30,7 @@ class CDB
 	{
 	    $this->pdo = "Echec de l'exécution : " . $e->getMessage();
 	}
-	
+
 	return $this->pdo;
     }
 
@@ -87,7 +87,6 @@ class CDB
     {
 	$cnx = $this->connect();
 	$requete = "INSERT INTO $table ($champs) VALUES ($values)";
-	echo $requete . "<br>";
 	$sql = $cnx->prepare($requete);
 	$sql->execute();
 	$cnx = NULL;
@@ -106,6 +105,21 @@ class CDB
 //        }
 	return $id;
 	$cnx = NULL;
+    }
+
+    public function insert_id_commandes()
+    {
+	$cnx = $this->connect();
+	$req = "SELECT MAX(id_commande) FROM Commandes";
+	$sql = $cnx->prepare($req);
+	$sql->execute();
+	$id = $sql->fetch();
+	$cnx = NULL;
+	
+	foreach ($id as $value)
+	{
+	    return $value;
+	}
     }
 
     public function update($table, $champsValues, $condition)
