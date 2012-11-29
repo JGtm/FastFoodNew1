@@ -168,7 +168,7 @@ class CMainController
                 if (isset($_POST['id_produit']) & isset($_POST['quantite']))
                 {
 
-                    $this->commande->ajoutProduit($_POST['id_produit'],$_POST['quantite']);
+                    $this->commande->ajoutProduit($_GET['params'],$_POST['quantite']);
                     $_SESSION['commande']=  serialize($this->commande);
                 }
                 

@@ -45,17 +45,16 @@ class CVueCommander
         $commande.='<tbody>';
         foreach ($produitCmd AS $values)
 	{
-        $object=  unserialize($values);
 	
         $commande.='<tr>';
         $commande.='<td>';
         $commande.='<label>';
-        $commande.= $object->getId_produit();
+        $commande.= $values->getId_produit();
         $commande.='</label>';
         $commande.='</td>';
         $commande.='<td>';
         $commande.='<label>';
-        $commande.= var_dump($values);
+        $commande.= $values->getQuantite();
         $commande.='</label>';
         $commande.='</td>';
         $commande.='</tr>';

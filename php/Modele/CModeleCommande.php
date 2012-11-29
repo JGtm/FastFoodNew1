@@ -36,7 +36,7 @@ class CModeleCommande
     function ajoutProduit($id_produit,$quantite)
     {
         $comprendre=new CModeleComprendre($this->id_commande,$id_produit,$quantite);
-	array_push($this->lesComprendres, serialize($comprendre));
+	array_push($this->lesComprendres, $comprendre);
         
     }
 
