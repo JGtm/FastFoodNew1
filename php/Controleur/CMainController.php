@@ -41,7 +41,11 @@ class CMainController
 	//$this->params = $params;
 	switch ($this->id)
 	{
-            
+            case 'pizzaPerso':
+                require_once('php/Vue/CVuePizzaPerso.php');
+                $this->view =new CVuePizzaPerso();
+                
+            break;
 	    case 'listeProduit':
 		require_once('php/Vue/CVueListeProduit.php');
 		$this->view = new CVueListeProduit();
