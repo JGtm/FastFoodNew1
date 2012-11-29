@@ -59,6 +59,7 @@ class CLayout
 		$tabLiens = array(
 		    'Accueil' => 'index.php',
 		    'Nos produits' => '?page=listeProduit',
+                    'Pizza Perso' => '?page=pizzaPerso',
 		    'Ma commande' => '?page=commander',
 		    'Contact' => '?page=contact ',
 		    'Se deconnecter' => '?action=deconnection&page=' . $_GET['page']
