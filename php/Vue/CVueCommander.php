@@ -50,7 +50,7 @@ class CVueCommander
 	$commande .= '<tr>';
 	$commande .= '<th>Vos pizzas sélectionnées</th>';
 	$commande .= '<th></th>';
-	$commande .= '<th  width="70">Prix (en €)</th>';
+	$commande .= '<th  width="70">Prix (en €)  </th>';
 	$commande .= '<th>Quantité</th>';
 	$commande .= '<th>Supprimer</th>';
 	$commande .= '</tr>';
@@ -64,7 +64,7 @@ class CVueCommander
 		$commande .= '<tr >';
 		$commande .='<td class="listePizza">' . $listeProduit['libelle_produit'] . '</td>';
 		$commande .= '<td></td>';
-		$commande .= '<td>' . $listeProduit['prix_produit'] . '</td>';
+		$commande .= '<td align="center">' . $listeProduit['prix_produit'] . '</td>';
 		$commande .= '<td>' . $listeProduit['quantite_produit'] . '</td>';
 		$commande .= '<td>X</td>';
 		$commande .= '</tr>';
@@ -77,7 +77,7 @@ class CVueCommander
 	$commande .= '<tr>';
 	$commande .= '<td>Total</td>';
 	$commande .= '<td></td>';
-	$commande .= '<td>' . $total . '</td>';
+	$commande .= '<td align="center">' . $total . '</td>';
 	$commande .= '<td></td>';
 	$commande .= '<td></td>';
 	$commande .= '</tr>';
