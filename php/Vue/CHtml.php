@@ -34,11 +34,11 @@ class CHtml
 	$header .= $this->nav($nav);
 	$header .= '</div>';
 	
-	if (isset($_COOKIE['session']) && $_COOKIE['session'])
-	{
-	    $header .= '<span class="usertag">' . $_SESSION['qualite'] . '</span>';
-	}
-	
+//	if (isset($_COOKIE['session']) && $_COOKIE['session'])
+//	{
+//	    $header .= '<span class="usertag">' . $_SESSION['qualite'] . '</span>';
+//	}
+//	
 	$header .= '</div>';
 	$header .= '<div class = "clear"></div>';
 	$header .= '</div>';
