@@ -13,7 +13,6 @@ class CVueCommander
 
     public function getHtml()
     {
-	//$html = $this->affichageCommande();
 	$html = $this->affichageCommande();
 
 	if (isset($_GET['error']))
@@ -41,9 +40,12 @@ class CVueCommander
 		$tabCommande['quantite_produit'] = $values->getQuantite();
 	    }
 	}
-
-	$_SESSION['panier'] [] = $tabCommande;
-
+	
+	if (isset($_GET['params']))
+	{
+	    $_SESSION['panier'] [] = $tabCommande;
+	}
+	
 	$commande = '<table>';
 	$commande .= '<tr>';
 	$commande .= '<th>Vos pizzas sélectionnées</th>';
@@ -54,18 +56,21 @@ class CVueCommander
 	$commande .= '</tr>';
 
 	$total = 0;
-
+	
 	foreach ($_SESSION['panier'] AS $listeProduit)
 	{
-	    $commande .= '<tr >';
-	    $commande .='<td class="listePizza">' . $listeProduit['libelle_produit'] . '</td>';
-	    $commande .= '<td></td>';
-	    $commande .= '<td>' . $listeProduit['prix_produit'] . '</td>';
-	    $commande .= '<td>' . $listeProduit['quantite_produit'] . '</td>';
-	    $commande .= '<td>X</td>';
-	    $commande .= '</tr>';
+	    if (!empty($listeProduit))
+	    {
+		$commande .= '<tr >';
+		$commande .='<td class="listePizza">' . $listeProduit['libelle_produit'] . '</td>';
+		$commande .= '<td></td>';
+		$commande .= '<td>' . $listeProduit['prix_produit'] . '</td>';
+		$commande .= '<td>' . $listeProduit['quantite_produit'] . '</td>';
+		$commande .= '<td>X</td>';
+		$commande .= '</tr>';
 
-	    $total += floatval($listeProduit['prix_produit']) * floatval($listeProduit['quantite_produit']);
+		$total += floatval($listeProduit['prix_produit']) * floatval($listeProduit['quantite_produit']);
+	    }
 	}
 
 

@@ -165,9 +165,9 @@ class CMainController
                     $this->commande = new CModeleCommande('','','','','',$_SESSION['id_utilisateur']);
                     $_SESSION['commande']= serialize ($this->commande);
                 }
-                if (isset($_POST['id_produit']) & isset($_POST['quantite']))
+                if (isset($_GET['params']) and isset($_POST['quantite']))
                 {
-
+		    echo 'too';
                     $this->commande->ajoutProduit($_GET['params'],$_POST['quantite']);
                     $_SESSION['commande']=  serialize($this->commande);
                 }
