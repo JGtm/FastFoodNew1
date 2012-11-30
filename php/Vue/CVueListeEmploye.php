@@ -54,13 +54,16 @@ class CVueListeEmploye
 	$strListe .= '<td><input type="submit" name="add" value="Ajouter" /></td>';
 	$strListe .= '</tr>';
 
-	foreach ($result as $employe)
+	if (!empty($result))
 	{
-	    $strListe .= '<tr>';
-	    $strListe .='<td>' . $employe['nom'] . '</td><td>' . $employe['prenom'] . '</td><td>' . $employe['email'] . '</td><td>' . $employe['mdp'] . '</td><td><input type="checkbox" name="selected" value="' . $employe['id_utilisateur'] . '" /></td>';
-	    $strListe .= '</tr>';
+	    foreach ($result as $employe)
+	    {
+		$strListe .= '<tr>';
+		$strListe .='<td>' . $employe['nom'] . '</td><td>' . $employe['prenom'] . '</td><td>' . $employe['email'] . '</td><td>' . $employe['mdp'] . '</td><td><input type="checkbox" name="selected" value="' . $employe['id_utilisateur'] . '" /></td>';
+		$strListe .= '</tr>';
+	    }
 	}
-
+	
 	$strListe .= '</table>';
 	$strListe .= '<input type="reset" name="annuler" value="Annuler" />';
 	$strListe .= '<input type="submit" name="del" value="Supprimer" />';
