@@ -57,23 +57,26 @@ class CVueCommander
 	$total = 0;
 	$strListeProduits = '';
 
-	foreach ($_SESSION['panier'] AS $listeProduit)
+	if (!empty($_SESSION['panier']))
 	{
-	    if (!empty($listeProduit))
+	    foreach ($_SESSION['panier'] AS $listeProduit)
 	    {
-		$commande .= '<tr >';
-		$commande .='<td class="listePizza">' . $listeProduit['libelle_produit'] . '</td>';
-		$strListeProduits .= $listeProduit['libelle_produit'] . ',';
-		$commande .= '<td></td>';
-		$commande .= '<td align="center">' . $listeProduit['prix_produit'] . '</td>';
-		$commande .= '<td>' . $listeProduit['quantite_produit'] . '</td>';
-		$commande .= '</tr>';
+		if (!empty($listeProduit))
+		{
+		    $commande .= '<tr >';
+		    $commande .='<td class="listePizza">' . $listeProduit['libelle_produit'] . '</td>';
+		    $strListeProduits .= $listeProduit['libelle_produit'] . ',';
+		    $commande .= '<td></td>';
+		    $commande .= '<td align="center">' . $listeProduit['prix_produit'] . '</td>';
+		    $commande .= '<td>' . $listeProduit['quantite_produit'] . '</td>';
+		    $commande .= '</tr>';
 
-		$total += floatval($listeProduit['prix_produit']) * floatval($listeProduit['quantite_produit']);
+		    $total += floatval($listeProduit['prix_produit']) * floatval($listeProduit['quantite_produit']);
+		}
 	    }
-	}
 
-	$strListeProduits = substr($strListeProduits, 0, -1);
+	    $strListeProduits = substr($strListeProduits, 0, -1);
+	}
 
 	$commande .= '<tr>';
 	$commande .= '<td>Total</td>';
